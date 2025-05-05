@@ -38,6 +38,7 @@ O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa
     <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="40"/><br>MongoDB</td>
     <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40"/><br>Git</td>
     <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="40"/><br>Figma</td>
+    <td align="center"><img src="https://static-00.iconduck.com/assets.00/material-ui-icon-2048x1626-on580ia9.png" width="40"/><br>Material UI</td>
   </tr>
 </table>
 
