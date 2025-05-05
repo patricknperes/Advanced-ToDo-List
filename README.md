@@ -1,0 +1,135 @@
+# ✅ Advanced ToDo List
+
+Sistema de gerenciamento de tarefas desenvolvido durante o treinamento interno da empresa. Este projeto simula um ambiente corporativo real com foco no desenvolvimento full stack de uma aplicação web moderna e funcional.
+
+---
+
+## 📋 Índice
+
+- [Visão Geral](#visão-geral)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Funcionalidades](#funcionalidades)
+- [Protótipos no Figma](#protótipos-no-figma)
+- [Capturas de Tela](#capturas-de-tela)
+- [Como Executar o Projeto](#como-executar-o-projeto)
+- [Autor](#autor)
+
+---
+
+## 📌 Visão Geral
+
+**Advanced ToDo List** é uma aplicação web voltada para a organização de tarefas. Permite que os usuários criem, editem e acompanhem suas tarefas por meio de um painel interativo, com suporte a diferentes estados (em andamento, pendente, concluída).
+
+O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa de formação de desenvolvedores full stack na empresa **Synergia**.
+
+---
+
+## 🧰 Tecnologias Utilizadas
+
+> Todas as tecnologias abaixo foram utilizadas no desenvolvimento da aplicação:
+
+<table>
+  <tr>
+    <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="40"/><br>HTML</td>
+    <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="40"/><br>CSS</td>
+    <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40"/><br>JavaScript</td>
+    <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="40"/><br>React</td>
+    <td align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Meteor-logo.png" width="40"/><br>Meteor</td>
+    <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="40"/><br>MongoDB</td>
+    <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="40"/><br>Git</td>
+    <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" width="40"/><br>Figma</td>
+  </tr>
+</table>
+
+---
+
+## ✅ Funcionalidades
+
+- Autenticação de usuário (login e cadastro)
+- Criação, edição e exclusão de tarefas
+- Filtros de status (Em andamento, Concluída, Pendente)
+- Dashboard com resumo de tarefas
+- Edição de perfil do usuário
+- Interface limpa e moderna
+- Layout responsivo
+
+---
+
+## 🎨 Protótipos no Figma
+
+Veja todos os protótipos utilizados no desenvolvimento da interface:
+
+🔗 [Ver no Figma](https://www.figma.com/file/SEU-LINK-AQUI)
+
+---
+
+## 🖼 Capturas de Tela
+
+> Exemplos de telas da aplicação (adicione as imagens na pasta `/assets/screens/`):
+
+- **Página Inicial**
+  ![Welcome](./assets/screens/welcome.png)
+
+- **Tela de Login**
+  ![Login](./assets/screens/login.png)
+
+- **Tela de Cadastro**
+  ![Cadastro](./assets/screens/signup.png)
+
+- **Painel de Tarefas**
+  ![Dashboard](./assets/screens/dashboard.png)
+
+- **Lista de Tarefas**
+  ![Tarefas](./assets/screens/tasks.png)
+
+- **Perfil do Usuário**
+  ![Perfil](./assets/screens/profile.png)
+
+---
+
+## 🚀 Como Executar o Projeto
+
+Siga os passos abaixo para rodar o projeto localmente:
+
+1. **Clone o repositório:**
+
+   ```bash
+   git clone https://github.com/PatrickNicolini/advanced-todo-list.git
+   ```
+
+2. **Acesse a pasta do projeto:**
+
+   ```bash
+   cd advanced-todo-list
+   ```
+
+3. **Instale as dependências:**
+
+   ```bash
+   meteor npm install
+   ```
+
+4. **Inicie o servidor de desenvolvimento:**
+
+   ```bash
+   meteor
+   ```
+
+5. **Abra no navegador:**
+
+   ```
+   http://localhost:3000
+   ```
+
+---
+
+## 👤 Autor
+
+**Patrick Peres Nicolini**  
+Desenvolvedor Full Stack (em formação)  
+[LinkedIn (opcional)](https://www.linkedin.com/in/patricknicolini/)  
+[Portfólio (opcional)](https://patricknicolini.dev)
+
+---
+
+© 2025 Synergia. Todos os direitos reservados.
