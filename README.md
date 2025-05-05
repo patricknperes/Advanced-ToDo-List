@@ -69,7 +69,7 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
 > Exemplos de telas da aplicação:
 
 - **Página Inicial**
-  ![Welcome](./public/screens/HomePage.jpg)
+  ![Welcome](./public/screens/homePage.jpg)
 
 - **Tela de Login**
   ![Login](./assets/screens/login.png)
