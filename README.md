@@ -1,6 +1,6 @@
 # ✅ Advanced ToDo List
 
-Sistema de gerenciamento de tarefas desenvolvido durante o treinamento interno da empresa. Este projeto simula um ambiente corporativo real com foco no desenvolvimento full stack de uma aplicação web moderna e funcional.
+Sistema de gerenciamento de tarefas desenvolvido durante o treinamento interno do Synergia. Este projeto simula um ambiente corporativo real com foco no desenvolvimento full stack de uma aplicação web moderna e funcional.
 
 ---
 
@@ -20,7 +20,7 @@ Sistema de gerenciamento de tarefas desenvolvido durante o treinamento interno d
 
 **Advanced ToDo List** é uma aplicação web voltada para a organização de tarefas. Permite que os usuários criem, editem e acompanhem suas tarefas por meio de um painel interativo, com suporte a diferentes estados (em andamento, pendente, concluída).
 
-O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa de formação de desenvolvedores full stack na empresa **Synergia**.
+O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa de formação de desenvolvedores full stack no **Synergia**.
 
 ---
 
@@ -94,13 +94,13 @@ Siga os passos abaixo para rodar o projeto localmente:
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/PatrickNicolini/advanced-todo-list.git
+   https://github.com/patricknperes/Advanced-ToDo-List.git
    ```
 
 2. **Acesse a pasta do projeto:**
 
    ```bash
-   cd advanced-todo-list
+   cd Advanced-ToDo-List
    ```
 
 3. **Instale as dependências:**
@@ -127,9 +127,9 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 **Patrick Peres Nicolini**  
 Desenvolvedor Full Stack (em formação)  
-[LinkedIn (opcional)](https://www.linkedin.com/in/patricknicolini/)  
-[Portfólio (opcional)](https://patricknicolini.dev)
+[LinkedIn (opcional)](https://www.linkedin.com/in/patricknperes/)  
+[Portfólio (opcional)](https://patrickportfoliowebsite.netlify.app/)
 
 ---
 
-© 2025 Synergia. Todos os direitos reservados.
+© 2025 Patrick Peres. Todos os direitos reservados.
