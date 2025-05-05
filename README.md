@@ -126,9 +126,9 @@ Siga os passos abaixo para rodar o projeto localmente:
 ## 👤 Autor
 
 **Patrick Peres Nicolini**  
-Desenvolvedor Full Stack (em formação)  
-[LinkedIn (opcional)](https://www.linkedin.com/in/patricknperes/)  
-[Portfólio (opcional)](https://patrickportfoliowebsite.netlify.app/)
+Desenvolvedor Full Stack  
+[LinkedIn](https://www.linkedin.com/in/patricknperes/)  
+[Portfólio](https://patrickportfoliowebsite.netlify.app/)
 
 ---
 
