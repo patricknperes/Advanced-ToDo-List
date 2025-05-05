@@ -60,7 +60,7 @@ O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa
 
 Veja todos os protótipos utilizados no desenvolvimento da interface:
 
-🔗 [Ver no Figma](https://www.figma.com/file/SEU-LINK-AQUI)
+🔗 [Ver no Figma](https://www.figma.com/design/2hj63cq5DVYWnrshU7OJk2/ToDo-List-UX-Synergia?node-id=24-49&t=8eg5yOwxJIm8QXyl-1)
 
 ---
 
