@@ -72,10 +72,10 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
   ![Welcome](./public/screens/homePage.jpg)
 
 - **Tela de Login**
-  ![Login](./assets/screens/login.png)
+  ![Login](./public/screens/signInPage.jpg)
 
 - **Tela de Cadastro**
-  ![Cadastro](./assets/screens/signup.png)
+  ![Cadastro](./public/screens/signUpPage.jpg)
 
 - **Painel de Tarefas**
   ![Dashboard](./assets/screens/dashboard.png)
