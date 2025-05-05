@@ -66,10 +66,10 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
 
 ## 🖼 Capturas de Tela
 
-> Exemplos de telas da aplicação (adicione as imagens na pasta `/assets/screens/`):
+> Exemplos de telas da aplicação:
 
 - **Página Inicial**
-  ![Welcome](./assets/screens/welcome.png)
+  ![Welcome](./ass)
 
 - **Tela de Login**
   ![Login](./assets/screens/login.png)
