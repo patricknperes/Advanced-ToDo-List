@@ -78,10 +78,13 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
   ![Cadastro](./public/screens/signUpPage.jpg)
 
 - **Painel de Tarefas**
-  ![Dashboard](./assets/screens/dashboard.png)
+  ![Dashboard](./public/screens/dashBoard.png)
 
 - **Lista de Tarefas**
-  ![Tarefas](./assets/screens/tasks.png)
+  ![Tarefas](./public/screens/tasks.png)
+
+- **Adicionar Tarefa**
+  ![Adicionar](./public/screens/addTask.png)
 
 - **Perfil do Usuário**
   ![Perfil](./assets/screens/profile.png)
