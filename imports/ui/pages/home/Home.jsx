@@ -1,11 +1,10 @@
 import React from 'react';
-import "./home.module.css";
+import "./home.module.jsx";
+import CardHome from './CardHome.jsx';
 
 const Home = () => {
     return (
-        <div>
-            <h1>Home Page</h1>
-        </div>
+        <CardHome />
     );
 };
 
