@@ -136,6 +136,10 @@ textarea {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
+  background-image: url('/assets/homeBg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 h1,

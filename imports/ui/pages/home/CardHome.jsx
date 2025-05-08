@@ -6,7 +6,9 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const CardHome = () => {
     return (
+
         <HomeStyle.CardContainer>
+
             <HomeStyle.CardTitle>
                 Advanced ToDo List <br /> Synergia UFMG
             </HomeStyle.CardTitle>
