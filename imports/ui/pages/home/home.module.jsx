@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, styled } from "@mui/material";
+import { Box, Button, styled } from "@mui/material";
 import Home from "./Home";
 
 const HomeStyle = {
@@ -13,12 +13,12 @@ const HomeStyle = {
     CardContainer: styled(Box)(({ theme }) => ({
         display: "flex",
         flexDirection: "column",
-        width: "100%",
-        height: "570px",
-        padding: "30px 60px",
+        padding: "8rem 4rem",
         justifyContent: "center",
-        rowGap: "var(--mb-2)",
+        rowGap: "var(--mb-1-5)",
         backgroundColor: "var(--container-color)",
+        borderRadius: "var(--mb-2)",
+        backgroundImage: "url(./public/assets/cardComponent.png)"
     })),
 
     CardTitle: styled("h1")(({ theme }) => ({
@@ -28,19 +28,12 @@ const HomeStyle = {
         color: "var(--title-color)",
     })),
 
-    CardTitleAccent: styled("h1")(({ theme }) => ({
-        fontSize: "var(--font-size-bigger)",
-        fontWeight: "var(--font-semi-bold)",
-        color: "var(--color-accent)",
-    })),
-
-
     CardDescription: styled("p")(({ theme }) => ({
         fontSize: "var(--font-size-base)",
         fontWeight: "var(--font-normal)",
         color: "var(--text-color)",
+        width: "500px",
     })),
-
 
 };
 
