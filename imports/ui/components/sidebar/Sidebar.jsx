@@ -1,63 +1,55 @@
 import * as React from 'react';
-import { createTheme, styled } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { createTheme } from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import DescriptionIcon from '@mui/icons-material/Description';
-import LayersIcon from '@mui/icons-material/Layers';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import Face2Icon from '@mui/icons-material/Face2';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
-import { PageContainer } from '@toolpad/core/PageContainer';
-import Grid from '@mui/material/Grid';
+import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
 
 const NAVIGATION = [
-    {
-        kind: 'header',
-        title: 'Main items',
-    },
     {
         segment: 'dashboard',
         title: 'Dashboard',
         icon: <DashboardIcon />,
     },
     {
-        segment: 'orders',
-        title: 'Orders',
-        icon: <ShoppingCartIcon />,
+        segment: 'tasks',
+        title: 'Tarefas',
+        icon: <AssignmentIcon />,
     },
     {
-        kind: 'divider',
-    },
-    {
-        kind: 'header',
-        title: 'Analytics',
-    },
-    {
-        segment: 'reports',
-        title: 'Reports',
-        icon: <BarChartIcon />,
-        children: [
-            {
-                segment: 'sales',
-                title: 'Sales',
-                icon: <DescriptionIcon />,
-            },
-            {
-                segment: 'traffic',
-                title: 'Traffic',
-                icon: <DescriptionIcon />,
-            },
-        ],
-    },
-    {
-        segment: 'integrations',
-        title: 'Integrations',
-        icon: <LayersIcon />,
+        segment: 'profile',
+        title: 'Perfil',
+        icon: <Face2Icon />,
     },
 ];
 
 const demoTheme = createTheme({
-    colorSchemes: { light: true, dark: true },
+    cssVarPrefix: 'mui', // prefixo padrão
+    colorSchemes: {
+        dark: {
+            palette: {
+                mode: 'dark',
+                background: {
+                    default: '#18191A',       // --body-color
+                    paper: '#18191A',          // --container-color
+                },
+                primary: {
+                    main: '#6768F2',           // --color-accent
+                    dark: '#6768F2',           // --color-accent-dark
+                    contrastText: '#FFFFFF',  // texto em botões etc.
+                },
+                text: {
+                    primary: '#B7B8B8',        // --text-color
+                    secondary: '#888888',      // texto secundário, opcional
+                },
+            },
+        },
+    },
     cssVariables: {
         colorSchemeSelector: 'class',
     },
@@ -72,81 +64,87 @@ const demoTheme = createTheme({
     },
 });
 
-function useDemoRouter(initialPath) {
-    const [pathname, setPathname] = React.useState(initialPath);
 
-    const router = React.useMemo(() => {
-        return {
-            pathname,
-            searchParams: new URLSearchParams(),
-            navigate: (path) => setPathname(String(path)),
-        };
-    }, [pathname]);
-
-    return router;
+function DemoPageContent({ pathname }) {
+    return (
+        <Box
+            sx={{
+                py: 4,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+            }}
+        >
+            <Typography>Dashboard content for {pathname}</Typography>
+        </Box>
+    );
 }
 
-const Skeleton = styled('div')(({ theme, height }) => ({
-    backgroundColor: theme.palette.action.hover,
-    borderRadius: theme.shape.borderRadius,
-    height,
-    content: '" "',
-}));
+DemoPageContent.propTypes = {
+    pathname: PropTypes.string.isRequired,
+};
 
-export default function DashboardLayoutBasic(props) {
+function DashboardLayoutAccount(props) {
     const { window } = props;
+
+    const [session, setSession] = React.useState({
+        user: {
+            name: 'Bharat Kashyap',
+            email: 'bharatkashyap@outlook.com',
+            image: 'https://avatars.githubusercontent.com/u/19550456',
+        },
+    });
+
+    const authentication = React.useMemo(() => {
+        return {
+            signIn: () => {
+                setSession({
+                    user: {
+                        name: 'Bharat Kashyap',
+                        email: 'bharatkashyap@outlook.com',
+                        image: 'https://avatars.githubusercontent.com/u/19550456',
+                    },
+                });
+            },
+            signOut: () => {
+                setSession(null);
+            },
+        };
+    }, []);
 
     const router = useDemoRouter('/dashboard');
 
     // Remove this const when copying and pasting into your project.
-    const demoWindow = window ? window() : undefined;
+    const demoWindow = window !== undefined ? window() : undefined;
 
     return (
-        <AppProvider
-            navigation={NAVIGATION}
-            router={router}
-            theme={demoTheme}
-            window={demoWindow}
-        >
-            <DashboardLayout>
-                <PageContainer>
-                    <Grid container spacing={1}>
-                        <Grid size={5} />
-                        <Grid size={12}>
-                            <Skeleton height={14} />
-                        </Grid>
-                        <Grid size={12}>
-                            <Skeleton height={14} />
-                        </Grid>
-                        <Grid size={4}>
-                            <Skeleton height={100} />
-                        </Grid>
-                        <Grid size={8}>
-                            <Skeleton height={100} />
-                        </Grid>
-
-                        <Grid size={12}>
-                            <Skeleton height={150} />
-                        </Grid>
-                        <Grid size={12}>
-                            <Skeleton height={14} />
-                        </Grid>
-
-                        <Grid size={3}>
-                            <Skeleton height={100} />
-                        </Grid>
-                        <Grid size={3}>
-                            <Skeleton height={100} />
-                        </Grid>
-                        <Grid size={3}>
-                            <Skeleton height={100} />
-                        </Grid>
-                        <Grid size={3}>
-                            <Skeleton height={100} />
-                        </Grid>
-                    </Grid>
-                </PageContainer>
-            </DashboardLayout>
-        </AppProvider>
+        // Remove this provider when copying and pasting into your project.
+        <DemoProvider window={demoWindow}>
+            {/* preview-start */}
+            <AppProvider
+                session={session}
+                authentication={authentication}
+                navigation={NAVIGATION}
+                router={router}
+                theme={demoTheme}
+                window={demoWindow}
+            >
+                <DashboardLayout>
+                    <DemoPageContent pathname={router.pathname} />
+                </DashboardLayout>
+            </AppProvider>
+            {/* preview-end */}
+        </DemoProvider>
     );
 }
+
+DashboardLayoutAccount.propTypes = {
+    /**
+     * Injected by the documentation to work in an iframe.
+     * Remove this when copying and pasting into your project.
+     */
+    window: PropTypes.func,
+};
+
+export default DashboardLayoutAccount;
