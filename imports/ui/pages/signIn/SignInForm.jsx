@@ -1,29 +1,44 @@
 import React from 'react';
 import SignInStyle from './signIn.module';
-import Typography from '@mui/material/Typography';
-import { Box, styled } from "@mui/material";
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import Header from '../../components/header/Header.jsx';
-import LockIcon from '@mui/icons-material/Lock';
-
+import InputAdornment from '@mui/material/InputAdornment';
+import EmailIcon from '@mui/icons-material/Email';
+import HttpsIcon from '@mui/icons-material/Https';
 
 const SignInForm = () => {
     return (
-        <Stack spacing={2} sx={{ marginTop: "3rem" }}>
+        <SignInStyle.SigninFormContainer component="form" >
             <SignInStyle.SignInTextField
                 id="email"
                 label="Email"
+                slotProps={{
+                    input: {
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <EmailIcon />
+                            </InputAdornment>
+                        ),
+                    },
+                }}
                 variant="outlined"
+                placeholder='Digite seu email'
                 type="email"
                 fullWidth
             />
             <SignInStyle.SignInTextField
                 id="password"
                 label="Senha"
+                slotProps={{
+                    input: {
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <HttpsIcon />
+                            </InputAdornment>
+                        ),
+                    },
+                }}
                 variant="outlined"
+                placeholder='Digite sua senha'
                 type="password"
                 fullWidth
 
@@ -31,7 +46,7 @@ const SignInForm = () => {
             <SignInStyle.SignInButtonOutlined variant="contained" color="primary" size="large" endIcon={<ArrowForwardIcon />} fullWidth>
                 Iniciar sessão
             </SignInStyle.SignInButtonOutlined>
-        </Stack>
+        </SignInStyle.SigninFormContainer>
     );
 }
 export default SignInForm;

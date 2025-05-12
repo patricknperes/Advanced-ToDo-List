@@ -3,8 +3,6 @@ import { Box, styled } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import SignIn from "./SignIn";
-
 
 const SignInStyle = {
 
@@ -12,7 +10,7 @@ const SignInStyle = {
         maxWidth: "1200px",
         height: "100vh",
         margin: "0 auto",
-        padding: "0 2rem",
+        padding: "3rem 2rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -69,6 +67,13 @@ const SignInStyle = {
         },
     })),
 
+    SigninFormContainer: styled(Box)(({ theme }) => ({
+        marginTop: "3rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+    })),
+
     SignInTextField: styled(TextField)(({ theme }) => ({
         "& .MuiOutlinedInput-root": {
             "& fieldset": {
@@ -81,12 +86,16 @@ const SignInStyle = {
                 borderColor: "var(--color-accent)",
             },
         },
+
         "& .MuiInputLabel-root": {
             color: "var(--text-color)",
+            fontFamily: "var(--font-family)",
+            fontWeight: "var(--font-regular)",
             "&.Mui-focused": {
                 color: "var(--color-accent)",
             },
         },
+
         "& .MuiInputBase-input": {
             color: "var(--text-color)",
             fontFamily: "var(--font-family)",
@@ -97,21 +106,37 @@ const SignInStyle = {
                 transition: "background-color 5000s ease-in-out 0s",
             },
         },
+
         "& .MuiFormHelperText-root": {
             color: "var(--color-accent)",
             fontFamily: "var(--font-family)",
             fontWeight: "var(--font-regular)",
         },
+
         "& .MuiFormLabel-root": {
             color: "var(--text-color)",
             fontFamily: "var(--font-family)",
             fontWeight: "var(--font-regular)",
         },
+
         "& .MuiFormLabel-root.Mui-focused": {
             color: "var(--color-accent)",
         },
+
         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
             borderColor: "var(--color-accent)",
+        },
+
+        // Ícones (ex: startAdornment, endAdornment)
+        "& .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: "var(--text-color)",
+            transition: "color 0.3s ease",
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: "var(--color-accent)",
+        },
+        "& .MuiOutlinedInput-root:hover .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: "var(--color-accent)",
         },
     })),
 

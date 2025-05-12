@@ -1,9 +1,7 @@
 import React from 'react';
 import HomeStyle from './home.module.jsx';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Typography } from '@mui/material';
 
 const CardHome = () => {
     return (
@@ -21,6 +19,7 @@ const CardHome = () => {
             </HomeStyle.CardText>
 
             <Stack direction="row" spacing={2}>
+
                 <HomeStyle.CardButtonContained
                     variant="contained"
                     color="primary"
