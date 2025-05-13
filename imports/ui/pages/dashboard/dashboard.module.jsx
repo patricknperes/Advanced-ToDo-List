@@ -2,11 +2,15 @@ import React from "react";
 import { Box, Button, styled } from "@mui/material";
 import { Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import Dashboard from "./Dashboard";
 
 const DashboardStyle = {
 
+    DashboardBackground: styled(Box)(({ theme }) => ({
+        background: "var(--body-color)",
+    })),
+
     DashboardContainer: styled(Box)(({ theme }) => ({
+        background: "var(--body-color)",
         maxWidth: "1200px",
         margin: "0 auto",
         padding: "3rem 2rem",
@@ -14,11 +18,18 @@ const DashboardStyle = {
         flexDirection: "column",
     })),
 
+    DashboardTitleContainer: styled(Box)(({ theme }) => ({
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: "var(--mb-2)",
+        gap: "1rem",
+    })),
+
     DashboardTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-semi-bold)",
         color: "var(--title-color)",
-        marginBottom: "var(--mb-2)",
     })),
 
     DashboardText: styled(Typography)(({ theme }) => ({
@@ -66,7 +77,7 @@ const DashboardStyle = {
 
     DashboardStatisticsContainer: styled(Box)(({ theme }) => ({
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
         gap: "1rem",
     })),
 

@@ -3,15 +3,13 @@ import Home from './pages/home/Home';
 import SignIn from './pages/signIn/SignIn';
 import SignUp from './pages/signUp/SignUp';
 import DashboardLayoutBasic from './components/sidebar/Sidebar';
-import Dashboard from './pages/dashboard/Dashboard';
 
 export const App = () => (
   <>
-    <Home />
-    <SignIn />
-    <SignUp />
+    {/* <Home /> */}
+    {/* <SignIn /> */}
+    {/* <SignUp /> */}
     <DashboardLayoutBasic />
-    <Dashboard />
   </>
 );
 

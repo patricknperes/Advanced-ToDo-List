@@ -10,6 +10,9 @@ import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
 
+import Dashboard from '../../pages/dashboard/Dashboard';
+import TasksList from '../../pages/tasksList/TasksList';
+
 const NAVIGATION = [
     {
         segment: 'dashboard',
@@ -29,23 +32,23 @@ const NAVIGATION = [
 ];
 
 const demoTheme = createTheme({
-    cssVarPrefix: 'mui', // prefixo padrão
+    cssVarPrefix: 'mui',
     colorSchemes: {
         dark: {
             palette: {
                 mode: 'dark',
                 background: {
-                    default: '#18191A',       // --body-color
-                    paper: '#18191A',          // --container-color
+                    default: '#18191A',
+                    paper: '#18191A',
                 },
                 primary: {
-                    main: '#6768F2',           // --color-accent
-                    dark: '#6768F2',           // --color-accent-dark
-                    contrastText: '#FFFFFF',  // texto em botões etc.
+                    main: '#6768F2',
+                    dark: '#6768F2',
+                    contrastText: '#FFFFFF',
                 },
                 text: {
-                    primary: '#B7B8B8',        // --text-color
-                    secondary: '#888888',      // texto secundário, opcional
+                    primary: '#B7B8B8',
+                    secondary: '#888888',
                 },
             },
         },
@@ -64,21 +67,35 @@ const demoTheme = createTheme({
     },
 });
 
-
+// Componente de exemplo para outras páginas
 function DemoPageContent({ pathname }) {
-    return (
-        <Box
-            sx={{
-                py: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-            }}
-        >
-            <Typography>Dashboard content for {pathname}</Typography>
-        </Box>
-    );
+    switch (pathname) {
+        case '/dashboard':
+            return (
+                <Box>
+                    <Dashboard />
+                </Box>
+            );
+        case '/tasks':
+            return (
+                <Box>
+                    <TasksList />
+                </Box>
+            );
+        case '/profile':
+            return (
+                <Box>
+                    <Typography variant="h5">Perfil do Usuário</Typography>
+                    {/* Coloque aqui o componente de perfil */}
+                </Box>
+            );
+        default:
+            return (
+                <Box>
+                    <Typography variant="h5">Página não encontrada</Typography>
+                </Box>
+            );
+    }
 }
 
 DemoPageContent.propTypes = {
@@ -115,13 +132,24 @@ function DashboardLayoutAccount(props) {
 
     const router = useDemoRouter('/dashboard');
 
-    // Remove this const when copying and pasting into your project.
     const demoWindow = window !== undefined ? window() : undefined;
 
+    // Função para renderizar o conteúdo com base no pathname
+    const renderContent = () => {
+        switch (router.pathname) {
+            case '/dashboard':
+                return <DemoPageContent pathname={router.pathname} />; // Renderiza seu componente Dashboard
+            case '/tasks':
+                return <DemoPageContent pathname={router.pathname} />; // Outra página
+            case '/profile':
+                return <DemoPageContent pathname={router.pathname} />; // Outra página
+            default:
+                return <DemoPageContent pathname={router.pathname} />; // Página padrão
+        }
+    };
+
     return (
-        // Remove this provider when copying and pasting into your project.
         <DemoProvider window={demoWindow}>
-            {/* preview-start */}
             <AppProvider
                 session={session}
                 authentication={authentication}
@@ -131,19 +159,14 @@ function DashboardLayoutAccount(props) {
                 window={demoWindow}
             >
                 <DashboardLayout>
-                    <DemoPageContent pathname={router.pathname} />
+                    {renderContent()} {/* Renderiza o conteúdo com base na rota */}
                 </DashboardLayout>
             </AppProvider>
-            {/* preview-end */}
         </DemoProvider>
     );
 }
 
 DashboardLayoutAccount.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * Remove this when copying and pasting into your project.
-     */
     window: PropTypes.func,
 };
 
