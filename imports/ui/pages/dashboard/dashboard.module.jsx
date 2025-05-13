@@ -5,8 +5,8 @@ import IconButton from '@mui/material/IconButton';
 import Dashboard from "./Dashboard";
 
 const DashboardStyle = {
+
     DashboardContainer: styled(Box)(({ theme }) => ({
-        backgroundColor: "var(--body-color)",
         maxWidth: "1200px",
         margin: "0 auto",
         padding: "3rem 2rem",
@@ -57,7 +57,7 @@ const DashboardStyle = {
     DashboardCardButton: styled(Button)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         backgroundColor: "var(--body-color)",
-        padding: "0.75rem 1.5rem",
+        padding: "0.75rem 3rem",
         fontWeight: "var(--font-normal)",
         "&:hover": {
             backgroundColor: "var(--container-color)",

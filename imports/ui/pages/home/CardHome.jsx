@@ -1,6 +1,5 @@
 import React from 'react';
 import HomeStyle from './home.module.jsx';
-import Stack from '@mui/material/Stack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const CardHome = () => {
@@ -18,7 +17,7 @@ const CardHome = () => {
                 Projeto desenvolvido por Patrick Peres durante o treinamento, utilizando Meteor, React, React Router e Material-UI para criar uma lista de tarefas moderna com autenticação, rotas e dashboard.
             </HomeStyle.CardText>
 
-            <Stack direction="row" spacing={2}>
+            <HomeStyle.CardButtonContainer>
 
                 <HomeStyle.CardButtonContained
                     variant="contained"
@@ -32,7 +31,7 @@ const CardHome = () => {
                     color="secondary" >
                     Sign In
                 </HomeStyle.CardButtonOutlined>
-            </Stack>
+            </HomeStyle.CardButtonContainer>
 
         </HomeStyle.CardContainer>
     );

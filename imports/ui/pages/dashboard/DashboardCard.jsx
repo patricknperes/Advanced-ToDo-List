@@ -4,6 +4,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const DashboardCard = () => {
     return (
+
         <DashboardStyle.DashboardCard>
             <DashboardStyle.DashboardCardTitle variant="h5">
                 Adicione uma nova tarefa

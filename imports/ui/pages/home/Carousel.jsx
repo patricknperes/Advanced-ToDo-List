@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 
 // Definindo os estilos com styled-components do Material-UI
-const LogosContainer = styled(Box)(() => ({
+const LogosContainer = styled(Box)(({ theme }) => ({
     overflow: 'hidden',
     padding: '20px 0',
     background: 'transparent',
@@ -30,9 +30,21 @@ const LogosContainer = styled(Box)(() => ({
     '&:hover .logos-slide': {
         animationPlayState: 'paused',
     },
+    [theme.breakpoints.down('md')]: {
+        padding: '15px 0',
+        '&:before, &:after': {
+            width: '120px',
+        },
+    },
+    [theme.breakpoints.down('sm')]: {
+        padding: '10px 0',
+        '&:before, &:after': {
+            width: '60px',
+        },
+    },
 }));
 
-const LogosSlide = styled(Box)(() => ({
+const LogosSlide = styled(Box)(({ theme }) => ({
     display: 'inline-block',
     animation: '35s slide infinite linear',
     '@keyframes slide': {
@@ -55,7 +67,7 @@ const LogosCarousel = () => {
     const logos = [
         // './assets/icons/css.png',
         // './assets/icons/html.png',
-        './assets/icons/js.png',
+        // './assets/icons/js.png',
         './assets/icons/materialUi.png',
         './assets/icons/meteor.png',
         './assets/icons/mongoDb.png',

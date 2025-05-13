@@ -85,7 +85,7 @@
 }
 
 /* Responsive typography */
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 899px) {
   :root {
     --font-size-extra-small: 0.5rem;
     /* 8px */

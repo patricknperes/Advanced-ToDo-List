@@ -7,10 +7,11 @@ import Dashboard from './pages/dashboard/Dashboard';
 
 export const App = () => (
   <>
-    {/* <Home />
+    <Home />
     <SignIn />
-    <SignUp /> */}
-    {/* <DashboardLayoutBasic /> */}
+    <SignUp />
+    <DashboardLayoutBasic />
     <Dashboard />
   </>
 );
+

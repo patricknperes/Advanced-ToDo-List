@@ -5,8 +5,6 @@ import { Typography } from '@mui/material';
 
 const HomeStyle = {
 
-
-
     HomeContent: styled(Box)(({ theme }) => ({
         padding: "3rem 0",
         minHeight: "100vh",
@@ -38,12 +36,29 @@ const HomeStyle = {
         backgroundPosition: "630px 40px, center",
         boxSizing: "border-box",
         width: "100%",
+        [theme.breakpoints.down("md")]: {
+            padding: "5rem 3rem",
+            backgroundSize: "450px, cover",
+            backgroundPosition: "530px 40px, center",
+            boxSizing: "border-box",
+        },
+        [theme.breakpoints.down("sm")]: {
+            padding: "3rem 2.5rem",
+            backgroundSize: "450px, cover",
+            backgroundPosition: "530px 40px, center",
+            boxSizing: "border-box",
+        },
     })),
 
     CardTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-semi-bold)",
         color: "var(--title-color)",
+        fontSize: "var(--font-size-bigger)",
+        [theme.breakpoints.down("sm")]: {
+            fontSize: "var(--font-size-big)",
+            marginBottom: "var(--mb-1)",
+        },
     })),
 
     CardText: styled(Typography)(({ theme }) => ({
@@ -51,6 +66,17 @@ const HomeStyle = {
         color: "var(--text-color)",
         maxWidth: "500px",
         marginBottom: "var(--mb-1-5)",
+        fontSize: "var(--font-size-base)",
+    })),
+
+    CardButtonContainer: styled(Box)(({ theme }) => ({
+        display: "flex",
+        flexDirection: "row",
+        gap: "1rem",
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: "column",
+            gap: "1rem",
+        },
     })),
 
     CardButtonContained: styled(Button)(({ theme }) => ({
@@ -58,6 +84,7 @@ const HomeStyle = {
         backgroundColor: "var(--color-accent)",
         padding: "0.75rem 1.5rem",
         fontWeight: "var(--font-normal)",
+        fontSize: "var(--font-size-medium-small)",
         "&:hover": {
             backgroundColor: "var(--color-accent-dark)",
         },
@@ -69,6 +96,7 @@ const HomeStyle = {
         fontWeight: "var(--font-normal)",
         color: "var(--new-button-color)",
         borderColor: "var(--new-button-color)",
+        fontSize: "var(--font-size-medium-small)",
         "&:hover": {
             backgroundColor: "var(--body-color)",
         },

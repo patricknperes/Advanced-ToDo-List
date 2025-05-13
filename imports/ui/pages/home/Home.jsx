@@ -15,10 +15,22 @@ const Home = () => {
                 <HomeStyle.HomeContainer>
                     <CardHome />
                 </HomeStyle.HomeContainer>
-                <MeuCarrossel />
+                <div className="carousel-desktop-only">
+                    <MeuCarrossel />
+                </div>
 
             </HomeStyle.HomeContent>
 
+            <style jsx>{`
+                .carousel-desktop-only {
+                    display: none;
+                }
+                @media (min-width: 899px) {
+                    .carousel-desktop-only {
+                        display: block;
+                    }
+                }
+            `}</style>
         </>
     );
 };
