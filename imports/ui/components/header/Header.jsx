@@ -2,17 +2,23 @@ import React from 'react';
 import "./header.module.jsx";
 import HeaderStyle from './header.module.jsx';
 import Stack from '@mui/material/Stack';
-import { Box, Button, styled } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
 
         <HeaderStyle.HeaderContainer>
             <HeaderStyle.HeaderContent>
-                <HeaderStyle.HeaderImage src="/assets/logoSynergiaLilas.png" alt="Logo" />
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <HeaderStyle.HeaderImage src="/assets/logoSynergiaLilas.png" alt="Logo" />
+                </Link>
                 <Stack spacing={2} direction="row">
-                    <HeaderStyle.CardButtonOutlined variant="outlined">Sign In</HeaderStyle.CardButtonOutlined>
-                    <HeaderStyle.CardButtonText variant="text">Sign Up</HeaderStyle.CardButtonText>
+                    <Link to="/login" style={{ textDecoration: 'none' }}>
+                        <HeaderStyle.CardButtonOutlined variant="outlined">Sign In</HeaderStyle.CardButtonOutlined>
+                    </Link>
+                    <Link to="/register" style={{ textDecoration: 'none' }}>
+                        <HeaderStyle.CardButtonText variant="text">Sign Up</HeaderStyle.CardButtonText>
+                    </Link>
                 </Stack>
             </HeaderStyle.HeaderContent>
         </HeaderStyle.HeaderContainer>

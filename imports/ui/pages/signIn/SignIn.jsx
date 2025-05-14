@@ -2,6 +2,7 @@ import React from 'react';
 import SignInStyle from './signIn.module';
 import SignInForm from './SignInForm';
 import Header from '../../components/header/Header.jsx';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
     return (
@@ -20,7 +21,7 @@ const SignIn = () => {
                         </SignInStyle.SignInTitle>
                         <SignInStyle.SignInText variant="body1">
                             Não tem conta? {' '}
-                            <a href="/signUp"
+                            <a href='/register'
                                 style={{
                                     fontFamily: "var(--font-family)",
                                     color: "var(--color-accent)",

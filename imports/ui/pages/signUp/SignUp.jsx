@@ -16,7 +16,7 @@ const SignUp = () => {
                         </SignUpStyle.SignUpTitle>
                         <SignUpStyle.SignUpText variant="body1">
                             Já possui uma conta? {' '}
-                            <a href="/signIn"
+                            <a href="/login"
                                 style={{
                                     fontFamily: "var(--font-family)",
                                     color: "var(--color-accent)",

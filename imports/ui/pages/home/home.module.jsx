@@ -94,8 +94,8 @@ const HomeStyle = {
         fontFamily: "var(--font-family)",
         padding: "0.75rem 1.5rem",
         fontWeight: "var(--font-normal)",
-        color: "var(--new-button-color)",
-        borderColor: "var(--new-button-color)",
+        color: "var(--title-color)",
+        borderColor: "var(--title-color)",
         fontSize: "var(--font-size-medium-small)",
         "&:hover": {
             backgroundColor: "var(--body-color)",

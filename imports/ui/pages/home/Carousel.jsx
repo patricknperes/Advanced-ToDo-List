@@ -67,7 +67,7 @@ const LogosCarousel = () => {
     const logos = [
         // './assets/icons/css.png',
         // './assets/icons/html.png',
-        // './assets/icons/js.png',
+        './assets/icons/js.png',
         './assets/icons/materialUi.png',
         './assets/icons/meteor.png',
         './assets/icons/mongoDb.png',

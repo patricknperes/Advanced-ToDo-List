@@ -24,8 +24,8 @@ const HeaderStyle = {
         fontFamily: "var(--font-family)",
         padding: "0.5rem 1rem",
         fontWeight: "var(--font-normal)",
-        color: "var(--new-button-color)",
-        borderColor: "var(--new-button-color)",
+        color: "var(--title-color)",
+        borderColor: "var(--title-color)",
         "&:hover": {
             backgroundColor: "var(--body-color)",
         },
@@ -35,7 +35,7 @@ const HeaderStyle = {
         fontFamily: "var(--font-family)",
         padding: "0.5rem 1rem",
         fontWeight: "var(--font-normal)",
-        color: "var(--new-button-color)",
+        color: "var(--title-color)",
         "&:hover": {
             backgroundColor: "var(--body-color)",
         },

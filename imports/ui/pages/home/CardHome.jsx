@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeStyle from './home.module.jsx';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link } from 'react-router-dom';
 
 const CardHome = () => {
     return (
@@ -19,18 +20,22 @@ const CardHome = () => {
 
             <HomeStyle.CardButtonContainer>
 
-                <HomeStyle.CardButtonContained
-                    variant="contained"
-                    color="primary"
-                    endIcon={<ArrowForwardIcon />} >
-                    Mais Informações
-                </HomeStyle.CardButtonContained>
+                <Link to="https://github.com/patricknperes/Advanced-ToDo-List" style={{ textDecoration: 'none' }} target="_blank">
+                    <HomeStyle.CardButtonContained
+                        variant="contained"
+                        color="primary"
+                        endIcon={<ArrowForwardIcon />} >
+                        Mais Informações
+                    </HomeStyle.CardButtonContained>
+                </Link>
 
-                <HomeStyle.CardButtonOutlined
-                    variant="outlined"
-                    color="secondary" >
-                    Sign In
-                </HomeStyle.CardButtonOutlined>
+                <Link to="/login" style={{ textDecoration: 'none' }}>
+                    <HomeStyle.CardButtonOutlined
+                        variant="outlined"
+                        color="secondary" >
+                        Sign In
+                    </HomeStyle.CardButtonOutlined>
+                </Link>
             </HomeStyle.CardButtonContainer>
 
         </HomeStyle.CardContainer>
