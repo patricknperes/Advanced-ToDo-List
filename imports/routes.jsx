@@ -7,6 +7,7 @@ import Home from './ui/pages/home/Home';
 import SignIn from './ui/pages/signIn/SignIn';
 import SignUp from './ui/pages/signUp/SignUp';
 import Dashboard from './ui/pages/dashboard/Dashboard';
+import NotFound from './ui/pages/notFound/NotFound';
 
 const ProtectedRoute = ({ children }) => {
     const { user, isLoading, error } = useTracker(() => {
@@ -59,15 +60,6 @@ const PublicRoute = ({ children }) => {
     }));
     return user ? <Navigate to="/dashboard" replace /> : children;
 };
-
-const NotFound = () => (
-    <Box sx={{ textAlign: 'center', mt: 4 }}>
-        <Typography variant="h4">404 - Página Não Encontrada</Typography>
-        <Typography variant="body1" sx={{ mt: 2 }}>
-            A página que você está procurando não existe.
-        </Typography>
-    </Box>
-);
 
 const AppRoutes = () => {
     return (
