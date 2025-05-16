@@ -12,6 +12,7 @@ import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
 
 import Dashboard from '../../pages/dashboard/Dashboard';
 import TasksList from '../../pages/tasksList/TasksList';
+import UserProfile from '../../pages/userProfile/UserProfile';
 
 const NAVIGATION = [
     {
@@ -85,8 +86,7 @@ function DemoPageContent({ pathname }) {
         case '/profile':
             return (
                 <Box>
-                    <Typography variant="h5">Perfil do Usuário</Typography>
-                    {/* Coloque aqui o componente de perfil */}
+                    <UserProfile />
                 </Box>
             );
         default:

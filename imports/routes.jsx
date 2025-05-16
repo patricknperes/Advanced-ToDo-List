@@ -6,8 +6,8 @@ import { CircularProgress, Box, Typography } from '@mui/material';
 import Home from './ui/pages/home/Home';
 import SignIn from './ui/pages/signIn/SignIn';
 import SignUp from './ui/pages/signUp/SignUp';
-import Dashboard from './ui/pages/dashboard/Dashboard';
 import NotFound from './ui/pages/notFound/NotFound';
+import DashboardLayoutAccount from './ui/components/sidebar/Sidebar';
 
 const ProtectedRoute = ({ children }) => {
     const { user, isLoading, error } = useTracker(() => {
@@ -72,7 +72,7 @@ const AppRoutes = () => {
                     path="/dashboard"
                     element={
                         <ProtectedRoute>
-                            <Dashboard />
+                            <DashboardLayoutAccount />
                         </ProtectedRoute>
                     }
                 />
