@@ -1,7 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
+import { useTracker } from 'meteor/react-meteor-data';
+import { Navigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
 import { createTheme } from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssignmentIcon from '@mui/icons-material/Assignment';
@@ -29,6 +33,9 @@ const NAVIGATION = [
         segment: 'profile',
         title: 'Perfil',
         icon: <Face2Icon />,
+    },
+    {
+        kind: 'divider',
     },
 ];
 
@@ -68,7 +75,6 @@ const demoTheme = createTheme({
     },
 });
 
-// Componente de exemplo para outras páginas
 function DemoPageContent({ pathname }) {
     switch (pathname) {
         case '/dashboard':
@@ -105,28 +111,12 @@ DemoPageContent.propTypes = {
 function DashboardLayoutAccount(props) {
     const { window } = props;
 
-    const [session, setSession] = React.useState({
-        user: {
-            name: 'Bharat Kashyap',
-            email: 'bharatkashyap@outlook.com',
-            image: 'https://avatars.githubusercontent.com/u/19550456',
-        },
-    });
-
-    const authentication = React.useMemo(() => {
+    const { user, isLoading, error } = useTracker(() => {
+        const subscription = Meteor.subscribe('currentUserData');
         return {
-            signIn: () => {
-                setSession({
-                    user: {
-                        name: 'Bharat Kashyap',
-                        email: 'bharatkashyap@outlook.com',
-                        image: 'https://avatars.githubusercontent.com/u/19550456',
-                    },
-                });
-            },
-            signOut: () => {
-                setSession(null);
-            },
+            user: Meteor.user(),
+            isLoading: !subscription.ready(),
+            error: !Meteor.status().connected ? 'Não foi possível conectar ao servidor' : null,
         };
     }, []);
 
@@ -134,19 +124,53 @@ function DashboardLayoutAccount(props) {
 
     const demoWindow = window !== undefined ? window() : undefined;
 
-    // Função para renderizar o conteúdo com base no pathname
-    const renderContent = () => {
-        switch (router.pathname) {
-            case '/dashboard':
-                return <DemoPageContent pathname={router.pathname} />; // Renderiza seu componente Dashboard
-            case '/tasks':
-                return <DemoPageContent pathname={router.pathname} />; // Outra página
-            case '/profile':
-                return <DemoPageContent pathname={router.pathname} />; // Outra página
-            default:
-                return <DemoPageContent pathname={router.pathname} />; // Página padrão
-        }
-    };
+    const session = React.useMemo(() => {
+        if (!user) return null;
+        return {
+            user: {
+                name: user.profile?.nome || 'Usuário',
+                email: user.emails?.[0]?.address || 'sem@email.com',
+                image: user.profile?.foto || '/assets/userImageProfile.webp',
+            },
+        };
+    }, [user]);
+
+    const authentication = React.useMemo(() => {
+        return {
+            signOut: () => {
+                Meteor.logout((err) => {
+                    if (!err) {
+                        router.push('/login');
+                    }
+                });
+            },
+        };
+    }, [router]);
+
+    if (isLoading) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }} role="status" aria-label="Carregando dashboard">
+                <CircularProgress />
+                <Typography variant="body1" sx={{ ml: 2 }}>
+                    Carregando...
+                </Typography>
+            </Box>
+        );
+    }
+
+    if (error) {
+        return (
+            <Box sx={{ p: 3, textAlign: 'center' }}>
+                <Typography variant="h6" color="error">
+                    {error}
+                </Typography>
+            </Box>
+        );
+    }
+
+    if (!user) {
+        return <Navigate to="/login" replace />;
+    }
 
     return (
         <DemoProvider window={demoWindow}>
@@ -159,7 +183,7 @@ function DashboardLayoutAccount(props) {
                 window={demoWindow}
             >
                 <DashboardLayout>
-                    {renderContent()} {/* Renderiza o conteúdo com base na rota */}
+                    <DemoPageContent pathname={router.pathname} />
                 </DashboardLayout>
             </AppProvider>
         </DemoProvider>

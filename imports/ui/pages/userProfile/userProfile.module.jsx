@@ -70,18 +70,26 @@ const UserProfileStyle = {
         boxShadow: "0 0 24px 5px rgba(0,0,0,0.08)",
     })),
 
+    UserProfileTitleLeft: styled(Typography)(({ theme }) => ({
+        fontFamily: "var(--body-font)",
+        fontWeight: "var(--font-medium)",
+        color: "var(--title-color)",
+        marginBottom: "var(--mb-0-5)",
+        textAlign: "center",
+    })),
+
     UserProfileTextLeft: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--body-font)",
         color: "var(--text-color)",
         fontWeight: "var(--font-regular)",
-        textAlign: "center",
         marginBottom: "var(--mb-1)",
+        textAlign: "center",
     })),
 
     // ========== Card Right ========== 
 
     UserProfileCardRight: styled(Box)(({ theme }) => ({
-        maxWidth: "600px",
+        width: "600px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
