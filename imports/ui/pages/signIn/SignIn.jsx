@@ -16,12 +16,12 @@ const SignIn = () => {
 
                     </SignInStyle.SignInLeft>
                     <SignInStyle.SignInRight>
-                        <SignInStyle.SignInTitle variant="h3">
+                        <SignInStyle.SignInTitle>
                             Acesse sua conta
                         </SignInStyle.SignInTitle>
-                        <SignInStyle.SignInText variant="body1">
+                        <SignInStyle.SignInText>
                             Não tem conta? {' '}
-                            <a href='/register'
+                            <Link to='/register'
                                 style={{
                                     fontFamily: "var(--font-family)",
                                     color: "var(--color-accent)",
@@ -33,7 +33,7 @@ const SignIn = () => {
                                     },
                                 }}>
                                 Cadastrar
-                            </a>
+                            </Link>
                         </SignInStyle.SignInText>
                         <SignInForm />
                     </SignInStyle.SignInRight>

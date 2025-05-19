@@ -10,6 +10,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import HttpsIcon from '@mui/icons-material/Https';
 import WcIcon from '@mui/icons-material/Wc';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -94,6 +95,9 @@ const SignUpForm = () => {
         );
     };
 
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
         <SignUpStyle.SignUpFormContainer component="form" onSubmit={handleSubmit} role="form">
             {success ? (
@@ -134,6 +138,7 @@ const SignUpForm = () => {
                         error={Boolean(errors.nome)}
                         helperText={errors.nome}
                         aria-label="Nome"
+                        size={isSmallScreen ? 'small' : 'medium'}
                     />
 
                     <SignUpStyle.SignUpTextField
@@ -157,6 +162,7 @@ const SignUpForm = () => {
                         error={Boolean(errors.email)}
                         helperText={errors.email}
                         aria-label="Email"
+                        size={isSmallScreen ? 'small' : 'medium'}
                     />
 
                     <SignUpStyle.SignUpFormLayout>
@@ -181,6 +187,7 @@ const SignUpForm = () => {
                             error={Boolean(errors.sexo)}
                             helperText={errors.sexo}
                             aria-label="Sexo"
+                            size={isSmallScreen ? 'small' : 'medium'}
                         />
 
                         <SignUpStyle.SignUpTextField
@@ -204,6 +211,7 @@ const SignUpForm = () => {
                             error={Boolean(errors.dataNascimento)}
                             helperText={errors.dataNascimento}
                             aria-label="Data de Nascimento"
+                            size={isSmallScreen ? 'small' : 'medium'}
                         />
                     </SignUpStyle.SignUpFormLayout>
 
@@ -228,6 +236,7 @@ const SignUpForm = () => {
                         error={Boolean(errors.empresa)}
                         helperText={errors.empresa}
                         aria-label="Empresa"
+                        size={isSmallScreen ? 'small' : 'medium'}
                     />
 
                     <SignUpStyle.SignUpFormLayout>
@@ -252,6 +261,7 @@ const SignUpForm = () => {
                             error={Boolean(errors.password)}
                             helperText={errors.password}
                             aria-label="Senha"
+                            size={isSmallScreen ? 'small' : 'medium'}
                         />
 
                         <SignUpStyle.SignUpTextField
@@ -275,13 +285,14 @@ const SignUpForm = () => {
                             error={Boolean(errors.confirmPassword)}
                             helperText={errors.confirmPassword}
                             aria-label="Confirme sua senha"
+                            size={isSmallScreen ? 'small' : 'medium'}
                         />
                     </SignUpStyle.SignUpFormLayout>
 
                     <SignUpStyle.SignUpButtonOutlined
                         variant="contained"
                         color="primary"
-                        size="large"
+                        size={isSmallScreen ? 'small' : 'large'}
                         fullWidth
                         endIcon={<ArrowForwardIcon />}
                         disabled={loading}

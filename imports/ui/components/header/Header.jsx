@@ -6,13 +6,15 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-
         <HeaderStyle.HeaderContainer>
             <HeaderStyle.HeaderContent>
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <HeaderStyle.HeaderImage src="/assets/logoSynergiaLilas.png" alt="Logo" />
                 </Link>
-                <Stack spacing={2} direction="row">
+                <Stack
+                    spacing={{ xs: 1, sm: 2 }}
+                    direction="row"
+                >
                     <Link to="/login" style={{ textDecoration: 'none' }}>
                         <HeaderStyle.CardButtonOutlined variant="outlined">Sign In</HeaderStyle.CardButtonOutlined>
                     </Link>
@@ -22,7 +24,6 @@ const Header = () => {
                 </Stack>
             </HeaderStyle.HeaderContent>
         </HeaderStyle.HeaderContainer>
-
     );
 };
 

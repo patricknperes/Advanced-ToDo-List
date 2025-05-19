@@ -6,12 +6,16 @@ import SignInStyle from './signIn.module';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import EmailIcon from '@mui/icons-material/Email';
 import HttpsIcon from '@mui/icons-material/Https';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const SignInForm = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
+
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const validateForm = () => {
         const newErrors = {};
@@ -69,6 +73,7 @@ const SignInForm = () => {
                 error={Boolean(errors.email)}
                 helperText={errors.email}
                 aria-label="Email"
+                size={isSmallScreen ? 'small' : 'medium'}
             />
             <SignInStyle.SignInTextField
                 id="password"
@@ -91,11 +96,12 @@ const SignInForm = () => {
                 error={Boolean(errors.password)}
                 helperText={errors.password}
                 aria-label="Senha"
+                size={isSmallScreen ? 'small' : 'medium'}
             />
             <SignInStyle.SignInButtonOutlined
                 variant="contained"
                 color="primary"
-                size="large"
+                size={isSmallScreen ? 'small' : 'large'}
                 endIcon={<ArrowForwardIcon />}
                 fullWidth
                 disabled={loading}

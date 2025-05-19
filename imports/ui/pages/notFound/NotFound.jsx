@@ -1,6 +1,7 @@
 import React from 'react';
 import NotFoundStyles from './notFound.module.jsx';
 import Header from '../../components/header/Header.jsx';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
     return (
@@ -15,9 +16,11 @@ const NotFound = () => {
                 <NotFoundStyles.NotFoundText>
                     Desculpe, a página que você está procurando não existe.
                 </NotFoundStyles.NotFoundText>
-                <NotFoundStyles.NotFoundButton variant="contained" href="/">
-                    Voltar para o início
-                </NotFoundStyles.NotFoundButton>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <NotFoundStyles.NotFoundButton variant="contained">
+                        Voltar para o início
+                    </NotFoundStyles.NotFoundButton>
+                </Link>
             </NotFoundStyles.NotFoundContent>
 
         </NotFoundStyles.NotFoundContainer>

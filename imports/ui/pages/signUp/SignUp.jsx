@@ -2,6 +2,7 @@ import React from 'react';
 import SignUpStyle from './signUp.module';
 import SignUpForm from './SignUpForm';
 import Header from "../../components/header/Header";
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return (
@@ -11,12 +12,12 @@ const SignUp = () => {
             <SignUpStyle.SignUpContainer>
                 <SignUpStyle.SignUpContent>
                     <SignUpStyle.SignUpLeft>
-                        <SignUpStyle.SignUpTitle variant="h3">
+                        <SignUpStyle.SignUpTitle>
                             Faça seu cadastro
                         </SignUpStyle.SignUpTitle>
-                        <SignUpStyle.SignUpText variant="body1">
+                        <SignUpStyle.SignUpText>
                             Já possui uma conta? {' '}
-                            <a href="/login"
+                            <Link to="/login"
                                 style={{
                                     fontFamily: "var(--font-family)",
                                     color: "var(--color-accent)",
@@ -28,7 +29,7 @@ const SignUp = () => {
                                     },
                                 }}>
                                 Acesse
-                            </a>
+                            </Link>
                         </SignUpStyle.SignUpText>
 
                         <SignUpForm />
