@@ -73,6 +73,9 @@ const demoTheme = createTheme({
             xl: 1536,
         },
     },
+    typography: {
+        fontFamily: 'var(--font-family)', // Defina a fonte desejada
+    },
 });
 
 function DemoPageContent({ pathname }) {
@@ -181,6 +184,12 @@ function DashboardLayoutAccount(props) {
                 router={router}
                 theme={demoTheme}
                 window={demoWindow}
+                branding={{ // Adicionado para alterar o logo
+                    logo: <img src="/assets/logoSynergiaLilas.png" alt="Logo" style={
+                        { width: '130px', height: 'auto' }
+                    } />,
+                    title: '',
+                }}
             >
                 <DashboardLayout>
                     <DemoPageContent pathname={router.pathname} />
