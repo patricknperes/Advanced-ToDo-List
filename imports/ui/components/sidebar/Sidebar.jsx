@@ -40,29 +40,21 @@ const NAVIGATION = [
 ];
 
 const demoTheme = createTheme({
-    cssVarPrefix: 'mui',
-    colorSchemes: {
-        dark: {
-            palette: {
-                mode: 'dark',
-                background: {
-                    default: '#18191A',
-                    paper: '#18191A',
-                },
-                primary: {
-                    main: '#6768F2',
-                    dark: '#6768F2',
-                    contrastText: '#FFFFFF',
-                },
-                text: {
-                    primary: '#B7B8B8',
-                    secondary: '#888888',
-                },
-            },
+    palette: {
+        mode: 'dark',
+        background: {
+            default: '#18191A',
+            paper: '#18191A',
         },
-    },
-    cssVariables: {
-        colorSchemeSelector: 'class',
+        primary: {
+            main: '#6768F2',
+            dark: '#6768F2',
+            contrastText: '#FFFFFF',
+        },
+        text: {
+            primary: '#B7B8B8',
+            secondary: '#888888',
+        },
     },
     breakpoints: {
         values: {
@@ -186,7 +178,7 @@ function DashboardLayoutAccount(props) {
                 window={demoWindow}
                 branding={{ // Adicionado para alterar o logo
                     logo: <img src="/assets/logoSynergiaLilas.png" alt="Logo" style={
-                        { width: '130px', height: 'auto' }
+                        { width: '130px', height: 'auto', marginLeft: 'var(--mb-0-25)' }
                     } />,
                     title: '',
                 }}

@@ -55,7 +55,7 @@ const UserProfileStyle = {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         padding: "4.5rem 3rem",
-        borderRadius: "1rem 2rem 2rem 1rem",
+        borderRadius: "1rem 0rem 0rem 1rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
