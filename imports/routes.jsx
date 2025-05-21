@@ -13,6 +13,7 @@ import Dashboard from './ui/pages/dashboard/Dashboard';
 import TasksList from './ui/pages/tasksList/TasksList';
 import UserProfile from './ui/pages/userProfile/UserProfile';
 import AddTasks from './ui/pages/addTasks/AddTasks';
+import EditTasks from './ui/pages/editTasks/EditTasks';
 
 const ProtectedRoute = ({ children }) => {
     const { user, isLoading, error } = useTracker(() => {
@@ -79,6 +80,9 @@ const AppRoutes = () => {
                     <Route path="profile" element={<UserProfile />} />
                     <Route path="add-tasks" element={<AddTasks />} />
                 </Route>
+                <Route path="/add-tasks" element={<ProtectedRoute><AddTasks /></ProtectedRoute>} />
+                <Route path="/edit-tasks" element={<ProtectedRoute><EditTasks /></ProtectedRoute>} />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

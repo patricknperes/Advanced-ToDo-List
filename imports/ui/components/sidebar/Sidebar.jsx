@@ -10,7 +10,6 @@ import { createTheme } from '@mui/material/styles';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import Face2Icon from '@mui/icons-material/Face2';
-import AddTaskIcon from '@mui/icons-material/AddTask';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
@@ -18,7 +17,6 @@ import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
 import Dashboard from '../../pages/dashboard/Dashboard';
 import TasksList from '../../pages/tasksList/TasksList';
 import UserProfile from '../../pages/userProfile/UserProfile';
-import AddTasks from '../../pages/addTasks/AddTasks';
 import NotFound from '../../pages/notFound/NotFound';
 
 const NAVIGATION = [
@@ -31,11 +29,6 @@ const NAVIGATION = [
         segment: 'tasks',
         title: 'Tarefas',
         icon: <AssignmentIcon />,
-    },
-    {
-        segment: 'add-tasks',
-        title: 'Adicionar Tarefas',
-        icon: <AddTaskIcon />,
     },
     {
         segment: 'profile',
@@ -96,12 +89,6 @@ function DemoPageContent({ pathname }) {
             return (
                 <Box>
                     <UserProfile />
-                </Box>
-            );
-        case '/add-tasks':
-            return (
-                <Box>
-                    <AddTasks />
                 </Box>
             );
         default:

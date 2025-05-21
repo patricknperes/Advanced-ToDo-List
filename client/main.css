@@ -86,6 +86,42 @@
   --z-modal: 1000;
 }
 
+::selection {
+  background-color: var(--color-accent);
+  color: var(--title-color);
+}
+
+/* Scrollbar elegante — WebKit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--container-color);
+  /* discreto e elegante */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  /* neutro e suave */
+  border-radius: 12px;
+  border: 2px solid var(--container-color);
+  /* suaviza o contorno */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--title-color);
+  /* branco elegante no hover */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-color) var(--container-color);
+}
+
+
+
 /* Responsive typography */
 @media screen and (max-width: 899px) {
   :root {

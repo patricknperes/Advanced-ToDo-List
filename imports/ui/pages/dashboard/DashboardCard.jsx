@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardStyle from './dashboard.module';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link } from 'react-router-dom';
 
 const DashboardCard = () => {
     return (
@@ -13,9 +14,11 @@ const DashboardCard = () => {
                 Mantenha sua produtividade <br />
                 em alta e continue organizando suas tarefas.
             </DashboardStyle.DashboardCardText>
-            <DashboardStyle.DashboardCardButton variant="contained" endIcon={<ArrowForwardIcon />}>
-                Nova Tarefa
-            </DashboardStyle.DashboardCardButton>
+            <Link to={'/add-tasks'}>
+                <DashboardStyle.DashboardCardButton variant="contained" endIcon={<ArrowForwardIcon />}>
+                    Nova Tarefa
+                </DashboardStyle.DashboardCardButton>
+            </Link>
         </DashboardStyle.DashboardCard>
     );
 };

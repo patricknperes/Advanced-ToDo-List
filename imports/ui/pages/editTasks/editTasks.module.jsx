@@ -2,95 +2,64 @@ import React from "react";
 import { Box, Button, styled } from "@mui/material";
 import { Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import Avatar from '@mui/material/Avatar';
 
-const UserProfileStyle = {
+const EditTasksStyle = {
 
-    UserProfileBackground: styled(Box)(({ theme }) => ({
-        backgroundColor: "var(--body-color)",
+    EditTasksBackground: styled(Box)(({ theme }) => ({
+        background: "var(--body-color)",
     })),
 
-    UserProfileContainer: styled(Box)(({ theme }) => ({
+    EditTasksContainer: styled(Box)(({ theme }) => ({
         maxWidth: "1200px",
         margin: "0 auto",
         padding: "3rem 2rem",
         display: "flex",
         flexDirection: "column",
-        minHeight: "90vh",
+        minHeight: "100vh",
         justifyContent: "center",
         alignItems: "center",
     })),
 
-    UserProfileTitle: styled(Typography)(({ theme }) => ({
+    EditTasksTitleContainer: styled(Box)(({ theme }) => ({
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: "1rem",
+    })),
+
+    EditTasksTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--body-font)",
         fontWeight: "var(--font-medium)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-0-25)",
     })),
 
-    UserProfileText: styled(Typography)(({ theme }) => ({
+    EditTasksText: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--body-font)",
         color: "var(--text-color)",
         fontWeight: "var(--font-regular)",
     })),
 
-    // ========== Card Profile Style ========== 
-
-    UserProfileCard: styled(Box)(({ theme }) => ({
+    EditTasksFormContainer: styled(Box)(({ theme }) => ({
         display: "flex",
         flexDirection: "row",
         backgroundColor: "var(--container-color)",
         borderRadius: "1rem",
         width: "100%",
-        maxWidth: "1000px",
-
         margin: "0 auto",
     })),
 
-    // ========== Card Left ========== 
-
-    UserProfileCardLeft: styled(Box)(({ theme }) => ({
-        maxWidth: "40%",
+    EditTasksLeft: styled(Box)(({ theme }) => ({
+        width: "40%",
         backgroundColor: "var(--color-accent)",
-        backgroundImage: "url(/assets/synergiaIconeProfile.png)",
-        backgroundSize: "700px",
+        backgroundImage: "url(/assets/wallpaperSynergiaAddTask.png)",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        padding: "4.5rem 3rem",
         borderRadius: "1rem 0rem 0rem 1rem",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
     })),
 
-    UserProfileCardAvatar: styled(Avatar)(({ theme }) => ({
-        width: "225px",
-        height: "225px",
-        border: "5px solid var(--color-accent)",
-        marginBottom: "var(--mb-1)",
-        boxShadow: "0 0 24px 5px rgba(0,0,0,0.08)",
-    })),
-
-    UserProfileTitleLeft: styled(Typography)(({ theme }) => ({
-        fontFamily: "var(--body-font)",
-        fontWeight: "var(--font-medium)",
-        color: "var(--title-color)",
-        marginBottom: "var(--mb-0-5)",
-        textAlign: "center",
-    })),
-
-    UserProfileTextLeft: styled(Typography)(({ theme }) => ({
-        fontFamily: "var(--body-font)",
-        color: "var(--text-color)",
-        fontWeight: "var(--font-regular)",
-        marginBottom: "var(--mb-1)",
-        textAlign: "center",
-    })),
-
-    // ========== Card Right ========== 
-
-    UserProfileCardRight: styled(Box)(({ theme }) => ({
+    EditTasksRight: styled(Box)(({ theme }) => ({
         width: "60%",
         display: "flex",
         flexDirection: "column",
@@ -99,20 +68,22 @@ const UserProfileStyle = {
         borderRadius: "0 1rem 1rem 0",
     })),
 
-    UserProfileFormContainer: styled(Box)(({ theme }) => ({
+    EditTasksForm: styled(Box)(({ theme }) => ({
         marginTop: "3rem",
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
     })),
 
-    UserProfileFormLayout: styled(Box)(({ theme }) => ({
+    EditTasksFormLayout: styled(Box)(({ theme }) => ({
+        width: "100%",
         display: "flex",
         flexDirection: "row",
         gap: "0.5rem",
     })),
 
-    UserProfileCardTextField: styled(TextField)(({ theme }) => ({
+
+    EditTasksCardTextField: styled(TextField)(({ theme }) => ({
         "& .MuiOutlinedInput-root": {
             "& fieldset": {
                 borderColor: "var(--text-color)",
@@ -178,7 +149,7 @@ const UserProfileStyle = {
         },
     })),
 
-    UserProfileCardButtonOutlined: styled(Button)(({ theme }) => ({
+    EditTasksButtonOutlined: styled(Button)(({ theme }) => ({
         marginTop: "var(--mb-1)",
         fontFamily: "var(--font-family)",
         backgroundColor: "var(--color-accent)",
@@ -196,6 +167,20 @@ const UserProfileStyle = {
         },
     })),
 
+    EditTasksButtonText: styled(Button)(({ theme }) => ({
+        marginTop: "var(--mb-1)",
+        fontFamily: "var(--font-family)",
+        // backgroundColor: "var(--color-accent)",
+        padding: "0.75rem 0.75rem",
+        fontWeight: "var(--font-normal)",
+        color: "var(--text-color)",
+        "&:hover": {
+        },
+        "&:active": {
+            boxShadow: "none",
+        },
+    })),
+
 };
 
-export default UserProfileStyle;
+export default EditTasksStyle;

@@ -162,6 +162,11 @@ const FormAddTask = () => {
                                 setDueDate(e.target.value);
                                 setErrors({ ...errors, dueDate: '' });
                             }}
+                            sx={{
+                                '& input[type="date"]::-webkit-calendar-picker-indicator': {
+                                    filter: 'invert(1) brightness(2)'
+                                },
+                            }}
                             error={!!errors.dueDate}
                             helperText={errors.dueDate}
                             fullWidth
@@ -231,7 +236,7 @@ const FormAddTask = () => {
                         <AddTasksStyle.AddTasksButtonText
                             variant="text"
                             startIcon={<ArrowBackIcon />}
-                            onClick={() => navigate('/tasks')}
+                            onClick={() => navigate('/dashboard')}
                             aria-label="Voltar para tarefas"
                         >
                             Voltar
