@@ -211,6 +211,11 @@ const SignUpForm = () => {
                             error={Boolean(errors.dataNascimento)}
                             helperText={errors.dataNascimento}
                             aria-label="Data de Nascimento"
+                            sx={{
+                                '& input[type="date"]::-webkit-calendar-picker-indicator': {
+                                    filter: 'invert(1) brightness(2)'
+                                },
+                            }}
                             size={isSmallScreen ? 'small' : 'medium'}
                         />
                     </SignUpStyle.SignUpFormLayout>

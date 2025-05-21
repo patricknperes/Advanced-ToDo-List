@@ -9,6 +9,11 @@ import SignUp from './ui/pages/signUp/SignUp';
 import NotFound from './ui/pages/notFound/NotFound';
 import DashboardLayoutAccount from './ui/components/sidebar/Sidebar';
 
+import Dashboard from './ui/pages/dashboard/Dashboard';
+import TasksList from './ui/pages/tasksList/TasksList';
+import UserProfile from './ui/pages/userProfile/UserProfile';
+import AddTasks from './ui/pages/addTasks/AddTasks';
+
 const ProtectedRoute = ({ children }) => {
     const { user, isLoading, error } = useTracker(() => {
         const handler = Meteor.subscribe('currentUserData');
@@ -68,14 +73,12 @@ const AppRoutes = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<PublicRoute><SignIn /></PublicRoute>} />
                 <Route path="/register" element={<PublicRoute><SignUp /></PublicRoute>} />
-                <Route
-                    path="/dashboard"
-                    element={
-                        <ProtectedRoute>
-                            <DashboardLayoutAccount />
-                        </ProtectedRoute>
-                    }
-                />
+                <Route path="/dashboard" element={<ProtectedRoute><DashboardLayoutAccount /></ProtectedRoute>}>
+                    <Route index element={<Dashboard />} />
+                    <Route path="tasks" element={<TasksList />} />
+                    <Route path="profile" element={<UserProfile />} />
+                    <Route path="add-tasks" element={<AddTasks />} />
+                </Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
