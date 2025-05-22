@@ -5,18 +5,34 @@ import DashboardStatistics from './DashboardStatistics';
 const painelIcon = '/assets/icons/painel.png';
 
 const Dashboard = () => {
+    // Hook para detectar largura da tela
+    const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+    React.useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    let iconSize = 40;
+    if (windowWidth < 600) {
+        iconSize = 24;
+    } else if (windowWidth < 900) {
+        iconSize = 32;
+    }
+
     return (
         <DashboardStyle.DashboardBackground>
             <DashboardStyle.DashboardContainer>
-                <DashboardStyle.DashboardText variant="h5">
+                <DashboardStyle.DashboardText>
                     Olá Usuário,
                 </DashboardStyle.DashboardText>
 
                 <DashboardStyle.DashboardTitleContainer>
-                    <DashboardStyle.DashboardTitle variant="h4">
+                    <DashboardStyle.DashboardTitle>
                         Painel de Controle
                     </DashboardStyle.DashboardTitle>
-                    <img src={painelIcon} alt="Painel Icon" style={{ width: 40, height: 40 }} />
+                    <img src={painelIcon} alt="Painel Icon" style={{ width: iconSize, height: iconSize }} />
                 </DashboardStyle.DashboardTitleContainer>
 
                 <DashboardCard />

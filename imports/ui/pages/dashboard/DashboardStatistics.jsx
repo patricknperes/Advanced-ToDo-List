@@ -61,10 +61,10 @@ const DashboardStatistics = () => {
         <DashboardStyle.DashboardStatisticsContainer>
             <DashboardStyle.DashboardStatisticsCardAccent role="region" aria-label="Estatísticas de tarefas criadas">
                 <DashboardStyle.DashboardStatisticsTitleContent>
-                    <DashboardStyle.DashboardStatisticsTitle variant="h5">
+                    <DashboardStyle.DashboardStatisticsTitle>
                         Tarefas Criadas
                     </DashboardStyle.DashboardStatisticsTitle>
-                    <Link to="/add-task" aria-label="Adicionar nova tarefa">
+                    <Link to="/add-tasks" aria-label="Adicionar nova tarefa">
                         <DashboardStyle.DashboardStatisticsButton>
                             <ArrowForwardIcon aria-hidden="true" />
                         </DashboardStyle.DashboardStatisticsButton>
@@ -73,17 +73,20 @@ const DashboardStatistics = () => {
                 <DashboardStyle.DashboardStatisticsNumber variant="h1">
                     {created}
                 </DashboardStyle.DashboardStatisticsNumber>
-                <DashboardStyle.DashboardStatisticsYellow variant="text" startIcon={<AssignmentIcon aria-hidden="true" />}>
+                <DashboardStyle.DashboardStatisticsYellow
+                    variant="text"
+                    startIcon={<AssignmentIcon aria-hidden="true" />}
+                >
                     Tarefas adicionadas
                 </DashboardStyle.DashboardStatisticsYellow>
             </DashboardStyle.DashboardStatisticsCardAccent>
 
             <DashboardStyle.DashboardStatisticsCard role="region" aria-label="Estatísticas de tarefas pendentes">
                 <DashboardStyle.DashboardStatisticsTitleContent>
-                    <DashboardStyle.DashboardStatisticsTitle variant="h5">
+                    <DashboardStyle.DashboardStatisticsTitle>
                         Tarefas Pendentes
                     </DashboardStyle.DashboardStatisticsTitle>
-                    <Link to="/add-task" aria-label="Adicionar nova tarefa">
+                    <Link to="/add-tasks" aria-label="Adicionar nova tarefa">
                         <DashboardStyle.DashboardStatisticsButton>
                             <ArrowForwardIcon aria-hidden="true" />
                         </DashboardStyle.DashboardStatisticsButton>
@@ -99,10 +102,10 @@ const DashboardStatistics = () => {
 
             <DashboardStyle.DashboardStatisticsCard role="region" aria-label="Estatísticas de tarefas concluídas">
                 <DashboardStyle.DashboardStatisticsTitleContent>
-                    <DashboardStyle.DashboardStatisticsTitle variant="h5">
+                    <DashboardStyle.DashboardStatisticsTitle>
                         Tarefas Concluídas
                     </DashboardStyle.DashboardStatisticsTitle>
-                    <Link to="/add-task" aria-label="Adicionar nova tarefa">
+                    <Link to="/add-tasks" aria-label="Adicionar nova tarefa">
                         <DashboardStyle.DashboardStatisticsButton>
                             <ArrowForwardIcon aria-hidden="true" />
                         </DashboardStyle.DashboardStatisticsButton>

@@ -1,6 +1,6 @@
 import React from 'react';
 import TasksListStyle from './tasksList.module';
-import EnhancedTable from './TasksComponent';
+
 const painelIcon = '/assets/icons/painel.png';
 
 
@@ -19,7 +19,6 @@ const TasksList = () => {
                     <img src={painelIcon} alt="Painel Icon" style={{ width: 40, height: 40 }} />
                 </TasksListStyle.TasksListTitleContainer>
 
-                <EnhancedTable />
             </TasksListStyle.TasksListContainer>
         </TasksListStyle.TasksListBackground>
     );

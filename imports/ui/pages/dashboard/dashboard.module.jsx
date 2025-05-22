@@ -16,6 +16,12 @@ const DashboardStyle = {
         padding: "3rem 2rem",
         display: "flex",
         flexDirection: "column",
+        [theme.breakpoints.down("md")]: {
+            padding: "3rem 1.5rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+            padding: "3rem 1.5rem",
+        },
     })),
 
     DashboardTitleContainer: styled(Box)(({ theme }) => ({
@@ -29,14 +35,19 @@ const DashboardStyle = {
     DashboardTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-semi-bold)",
+        fontSize: "var(--font-size-extra-large)",
         color: "var(--title-color)",
     })),
 
     DashboardText: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-normal)",
+        fontSize: "var(--font-size-larger)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-0-25)",
+        [theme.breakpoints.down("md")]: {
+            marginBottom: "0",
+        },
     })),
 
     DashboardCard: styled(Box)(({ theme }) => ({
@@ -48,11 +59,19 @@ const DashboardStyle = {
         backgroundSize: "430px",
         backgroundPosition: "770px center",
         marginBottom: "var(--mb-1-5)",
+        [theme.breakpoints.down("md")]: {
+            backgroundPosition: "center",
+            padding: "3rem 2.5rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+            padding: "2.5rem 2rem",
+        },
     })),
 
     DashboardCardTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-normal)",
+        fontSize: "var(--font-size-larger)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-1)",
         textTransform: "uppercase",
@@ -61,6 +80,7 @@ const DashboardStyle = {
     DashboardCardText: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-medium)",
+        fontSize: "var(--font-size-extra-large)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-2)",
     })),
@@ -73,12 +93,21 @@ const DashboardStyle = {
         "&:hover": {
             backgroundColor: "var(--container-color)",
         },
+        [theme.breakpoints.down("sm")]: {
+            width: "100%",
+        },
     })),
 
     DashboardStatisticsContainer: styled(Box)(({ theme }) => ({
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
         gap: "1rem",
+        [theme.breakpoints.down("md")]: {
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        },
+        [theme.breakpoints.down("sm")]: {
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+        },
     })),
 
     DashboardStatisticsCard: styled(Box)(({ theme }) => ({
@@ -99,11 +128,13 @@ const DashboardStyle = {
         justifyContent: "space-between",
         alignItems: "center",
         marginBottom: "var(--mb-1)",
+        gap: "1rem",
     })),
 
     DashboardStatisticsTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-normal)",
+        fontSize: "var(--font-size-larger)",
         color: "var(--title-color)",
     })),
 
@@ -117,6 +148,9 @@ const DashboardStyle = {
             color: "var(--title-color)",
             backgroundColor: "var(--color-accent)",
             transform: "rotate(-50deg)",
+        },
+        [theme.breakpoints.down("sm")]: {
+            padding: "0.25rem",
         },
     })),
 
