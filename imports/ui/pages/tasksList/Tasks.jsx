@@ -7,6 +7,11 @@ import { Task } from './Task';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import TasksListStyle from './tasksList.module';
+
+import DisabledVisibleIcon from '@mui/icons-material/DisabledVisible';
+import PublicIcon from '@mui/icons-material/Public';
+import AddIcon from '@mui/icons-material/Add';
 
 const Tasks = () => {
     const navigate = useNavigate();
@@ -111,189 +116,141 @@ const Tasks = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', flexGrow: 1 }}>
+        <TasksListStyle.TasksContainer>
+
+            <TasksListStyle.TasksListMenu>
+                <TasksListStyle.TasksListMenuLeft>
+                    <TasksListStyle.TasksListMenuChip
+                        icon={<PublicIcon />}
+                        label="Tarefas Públicas"
+                        clickable
+                        disabled={disableChip}
+                        onClick={togglePublicTasks}
+                        color={showPublicTasks ? 'primary' : 'default'}
+                        variant={showPublicTasks ? 'filled' : 'outlined'}
+                    />
+
+                    <TasksListStyle.TasksListMenuChip
+                        icon={<DisabledVisibleIcon />}
+                        label="Ocultar Concluídas"
+                        clickable
+                        disabled={disableChip}
+                        onClick={toggleCompletedTasks}
+                        color={hideCompletedTasks ? 'primary' : 'default'}
+                        variant={hideCompletedTasks ? 'filled' : 'outlined'}
+                    />
+
+                    <TasksListStyle.TasksListMenuSearchBar
+                        fullWidth
+                        placeholder="Pesquisar tarefas"
+                        autoComplete="off"
+                        value={search}
+                        onChange={handleSearch}
+                        variant="outlined"
+                        slotProps={{
+                            input: {
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <SearchIcon />
+                                    </InputAdornment>
+                                ),
+                            },
+                        }}
+                    />
+
+                </TasksListStyle.TasksListMenuLeft>
+
+                <TasksListStyle.TasksListMenuRight>
+
+                    <TasksListStyle.TasksListMenuButton
+                        variant="contained"
+                        onClick={handleAddNewTask}
+                        type="submit"
+                        startIcon={<AddIcon />}
+                    >
+                        Nova Tarefa
+                    </TasksListStyle.TasksListMenuButton>
+
+                </TasksListStyle.TasksListMenuRight>
+            </TasksListStyle.TasksListMenu>
+
+            <TasksListStyle.TasksListLabelContainer>
+                <TasksListStyle.TasksListLabelLeft>
+                    <TasksListStyle.TasksListLabelTitle>
+                        Lista de Tarefas
+                    </TasksListStyle.TasksListLabelTitle>
+                </TasksListStyle.TasksListLabelLeft>
+
+                <TasksListStyle.TasksListLabelRigth>
+                    <TasksListStyle.TasksListLabelTitle>
+                        Responsável
+                    </TasksListStyle.TasksListLabelTitle>
+
+                    <TasksListStyle.TasksListLabelTitle>
+                        Progresso
+                    </TasksListStyle.TasksListLabelTitle>
+
+                    <TasksListStyle.TasksListLabelTitle>
+                        Opções
+                    </TasksListStyle.TasksListLabelTitle>
+                </TasksListStyle.TasksListLabelRigth>
+            </TasksListStyle.TasksListLabelContainer>
+
             <Box
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     flexGrow: 1,
-                    borderRadius: 2,
                     overflow: 'auto',
-                    alignContent: 'center',
                 }}
             >
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        marginBottom: '2rem',
-                        justifyContent: 'space-between'
-                    }}
-                >
-                    <Button
-                        onClick={handleAddNewTask}
-                        type="submit"
-                        variant="contained"
-                    >
-                        Adicionar nova
-                    </Button>
-
-                    <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                        <Chip
-                            label="Tarefas públicas"
-                            clickable
-                            disabled={disableChip}
-                            onClick={togglePublicTasks}
-                            color={showPublicTasks ? 'primary' : 'default'}
-                            variant={showPublicTasks ? 'filled' : 'outlined'}
-                        />
-
-                        <Chip
-                            label="Ocultar completas"
-                            clickable
-                            disabled={disableChip}
-                            onClick={toggleCompletedTasks}
-                            color={hideCompletedTasks ? 'primary' : 'default'}
-                            variant={hideCompletedTasks ? 'filled' : 'outlined'}
-                        />
+                {isTasksLoading ? (
+                    <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+                        <CircularProgress sx={{ color: '#4A5C7E' }} />
                     </Box>
-
-                    <Box sx={{ width: 'auto', alignItems: 'center' }}>
-                        <TextField
-                            fullWidth
-                            placeholder="Pesquisar tarefas..."
-                            autoComplete="off"
-                            value={search}
-                            onChange={handleSearch}
-                            variant="outlined"
-                            slotProps={{
-                                input: {
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <SearchIcon />
-                                        </InputAdornment>
-                                    ),
-                                },
-                            }}
+                ) : tasks.length > 0 ? (
+                    tasks.map((task) => (
+                        <Task
+                            key={task._id}
+                            task={task}
+                            onDeleteClick={deleteTask}
+                            onStatusChange={updateTaskStatus}
                         />
-                    </Box>
-                </Box>
-
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        flexGrow: 1,
-                        bgcolor: 'var(--container-color)',
-                        overflow: 'auto',
-                    }}
-                >
+                    ))
+                ) : (
                     <Box
                         sx={{
+                            p: 3,
+                            textAlign: 'center',
                             display: 'flex',
+                            flexDirection: 'column',
                             alignItems: 'center',
-                            padding: '8px 16px',
                         }}
                     >
-                        <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-                            <Typography
-                                sx={{
-                                    fontFamily: 'var(--font-family)',
-                                    fontWeight: 500,
-                                    fontSize: '14px',
-                                    width: '93%',
-                                    color: 'var(--text-color)',
-                                }}
-                            >
-                                Tarefa
-                            </Typography>
-                            <Typography
-                                sx={{
-                                    fontFamily: 'var(--font-family)',
-                                    fontWeight: 500,
-                                    fontSize: '14px',
-                                    width: '20%',
-                                    color: 'var(--text-color)',
-                                }}
-                            >
-                                Usuário
-                            </Typography>
-                            <Typography
-                                sx={{
-                                    fontFamily: 'var(--font-family)',
-                                    fontWeight: 500,
-                                    fontSize: '14px',
-                                    width: '20%',
-                                    color: 'var(--text-color)',
-                                }}
-                            >
-                                Status
-                            </Typography>
-                        </Box>
-                        <Box sx={{ width: '65px', mr: 0 }}>
-                            <Typography
-                                sx={{
-                                    fontFamily: 'var(--font-family)',
-                                    fontWeight: 500,
-                                    fontSize: '14px',
-                                    width: '100%',
-                                    color: 'var(--text-color)',
-                                }}
-                            >
-                                Ações
-                            </Typography>
-                        </Box>
-                    </Box>
-
-                    {isTasksLoading ? (
-                        <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
-                            <CircularProgress sx={{ color: '#4A5C7E' }} />
-                        </Box>
-                    ) : tasks.length > 0 ? (
-                        tasks.map((task) => (
-                            <Task
-                                key={task._id}
-                                task={task}
-                                onDeleteClick={deleteTask}
-                                onStatusChange={updateTaskStatus}
-                            />
-                        ))
-                    ) : (
                         <Box
+                            component="img"
+                            src="/images/wired-outline-262-emoji-wow-hover-pinch.gif"
+                            alt="Empty tasks"
                             sx={{
-                                p: 3,
-                                textAlign: 'center',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
+                                width: 300,
+                                height: 300,
+                                mt: 5,
+                                mb: 2,
+                                objectFit: 'cover',
+                                borderRadius: 1,
+                                color: 'text.secondary',
                             }}
+                        />
+                        <Typography
+                            color="textSecondary"
+                            sx={{ mt: 1, fontFamily: 'var(--font-family)', fontSize: '24px' }}
                         >
-                            <Box
-                                component="img"
-                                src="/images/wired-outline-262-emoji-wow-hover-pinch.gif"
-                                alt="Empty tasks"
-                                sx={{
-                                    width: 300,
-                                    height: 300,
-                                    mt: 5,
-                                    mb: 2,
-                                    objectFit: 'cover',
-                                    borderRadius: 1,
-                                    color: 'text.secondary',
-                                }}
-                            />
-                            <Typography
-                                color="textSecondary"
-                                sx={{ mt: 1, fontFamily: 'Poppins', fontSize: '24px' }}
-                            >
-                                Você não tem tarefas!
-                            </Typography>
-                        </Box>
-                    )}
-                </Box>
+                            Você não tem tarefas!
+                        </Typography>
+                    </Box>
+                )}
             </Box>
-        </Box>
+        </TasksListStyle.TasksContainer>
     );
 };
 
