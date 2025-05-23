@@ -43,8 +43,11 @@ const UserProfileStyle = {
         borderRadius: "1rem",
         width: "100%",
         maxWidth: "1000px",
-
         margin: "0 auto",
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: "column",
+            maxWidth: "100%",
+        },
     })),
 
     // ========== Card Left ========== 
@@ -62,6 +65,10 @@ const UserProfileStyle = {
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
+        [theme.breakpoints.down("sm")]: {
+            maxWidth: "100%",
+            borderRadius: "1rem 1rem 0rem 0rem",
+        },
     })),
 
     UserProfileCardAvatar: styled(Avatar)(({ theme }) => ({
@@ -97,6 +104,11 @@ const UserProfileStyle = {
         justifyContent: "center",
         padding: "4.5rem",
         borderRadius: "0 1rem 1rem 0",
+        [theme.breakpoints.down("sm")]: {
+            width: "100%",
+            borderRadius: "0rem 0rem 1rem 1rem",
+            padding: "2.5rem",
+        },
     })),
 
     UserProfileFormContainer: styled(Box)(({ theme }) => ({
@@ -110,6 +122,10 @@ const UserProfileStyle = {
         display: "flex",
         flexDirection: "row",
         gap: "0.5rem",
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: "column",
+            gap: "1rem",
+        },
     })),
 
     UserProfileCardTextField: styled(TextField)(({ theme }) => ({

@@ -7,7 +7,7 @@ import MeuCarrossel from './Carousel.jsx';
 
 const Home = () => {
     return (
-        <>
+        <HomeStyle.BackgroundStyle>
             <Header />
 
             <HomeStyle.HomeContent>
@@ -31,7 +31,7 @@ const Home = () => {
                     }
                 }
             `}</style>
-        </>
+        </HomeStyle.BackgroundStyle>
     );
 };
 

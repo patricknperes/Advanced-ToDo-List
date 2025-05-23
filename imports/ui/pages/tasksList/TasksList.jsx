@@ -1,5 +1,6 @@
 import React from 'react';
 import TasksListStyle from './tasksList.module';
+import Tasks from './Tasks';
 
 const painelIcon = '/assets/icons/painel.png';
 
@@ -18,6 +19,8 @@ const TasksList = () => {
                     </TasksListStyle.TasksListTitle>
                     <img src={painelIcon} alt="Painel Icon" style={{ width: 40, height: 40 }} />
                 </TasksListStyle.TasksListTitleContainer>
+
+                <Tasks />
 
             </TasksListStyle.TasksListContainer>
         </TasksListStyle.TasksListBackground>

@@ -3,6 +3,17 @@ import { Box, Button, styled } from "@mui/material";
 import { Typography } from '@mui/material';
 
 const HomeStyle = {
+
+    BackgroundStyle: styled(Box)(({ theme }) => ({
+        color: "var(--text-color)",
+        backgroundImage: "url('/assets/homeBg.jpg')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+    })),
+
+
     HomeContent: styled(Box)(({ theme }) => ({
         padding: "3rem 0",
         minHeight: "100vh",

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     return (
-        <>
+        <SignUpStyle.BackgroundStyle>
             <Header />
 
             <SignUpStyle.SignUpContainer>
@@ -39,7 +39,7 @@ const SignUp = () => {
                     </SignUpStyle.SignUpRight>
                 </SignUpStyle.SignUpContent>
             </SignUpStyle.SignUpContainer>
-        </>
+        </SignUpStyle.BackgroundStyle>
     );
 };
 

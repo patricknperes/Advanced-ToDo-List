@@ -5,6 +5,16 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 const SignInStyle = {
+
+    BackgroundStyle: styled(Box)(({ theme }) => ({
+        color: "var(--text-color)",
+        backgroundImage: "url('/assets/homeBg.jpg')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+    })),
+
     SignInContainer: styled(Box)(({ theme }) => ({
         maxWidth: "1200px",
         height: "100vh",

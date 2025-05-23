@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const SignIn = () => {
     return (
 
-        <>
+        <SignInStyle.BackgroundStyle>
             <Header />
 
             <SignInStyle.SignInContainer>
@@ -39,7 +39,7 @@ const SignIn = () => {
                     </SignInStyle.SignInRight>
                 </SignInStyle.SignInContent>
             </SignInStyle.SignInContainer>
-        </>
+        </SignInStyle.BackgroundStyle>
     );
 };
 

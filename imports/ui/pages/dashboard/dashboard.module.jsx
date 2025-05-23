@@ -41,7 +41,7 @@ const DashboardStyle = {
         alignItems: "center",
         marginBottom: "var(--mb-2)",
         gap: "1rem",
-        animation: "fadeInTitle 1s ease-out 0.2s forwards",
+        animation: "fadeInTitle 1s ease-out 0.4s forwards",
         opacity: 0,
         "@keyframes fadeInTitle": {
             "0%": { opacity: 0, transform: "translateY(15px)" },
@@ -62,7 +62,7 @@ const DashboardStyle = {
         fontSize: "var(--font-size-larger)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-0-25)",
-        animation: "fadeInText 1s ease-out 0.4s forwards",
+        animation: "fadeInText 1s ease-out 0.2s forwards",
         opacity: 0,
         "@keyframes fadeInText": {
             "0%": { opacity: 0, transform: "translateY(15px)" },
@@ -90,7 +90,7 @@ const DashboardStyle = {
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
         [theme.breakpoints.down("md")]: {
-            backgroundPosition: "center",
+            backgroundPosition: "530px center",
             padding: "3rem 2.5rem",
         },
         [theme.breakpoints.down("sm")]: {

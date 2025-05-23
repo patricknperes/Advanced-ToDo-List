@@ -39,7 +39,7 @@ const ProtectedRoute = ({ children }) => {
                 role="status"
                 aria-label="Carregando status de autenticação"
             >
-                <CircularProgress size={60} thickness={4} sx={{ color: 'var(--title-color)' }} />
+                <CircularProgress size={60} thickness={4} sx={{ color: 'var(--color-accent)' }} />
                 <Typography variant="body1" sx={{ mt: 2 }}>
                     Carregando...
                 </Typography>
@@ -81,8 +81,7 @@ const AppRoutes = () => {
                     <Route path="add-tasks" element={<AddTasks />} />
                 </Route>
                 <Route path="/add-tasks" element={<ProtectedRoute><AddTasks /></ProtectedRoute>} />
-                <Route path="/edit-tasks" element={<ProtectedRoute><EditTasks /></ProtectedRoute>} />
-
+                <Route path="/edit-tasks/:id" element={<ProtectedRoute><EditTasks /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
