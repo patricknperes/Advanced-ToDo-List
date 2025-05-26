@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from './TasksCollection';
+import { check } from 'meteor/check';
 
 Meteor.methods({
     //insersão de uma nova tarefa
@@ -89,5 +90,24 @@ Meteor.methods({
         }
 
         return TasksCollection.removeAsync(_id);
+    },
+
+    async 'tasks.deleteMultiple'(taskIds) {
+        // Verifica se o usuário está logado
+        if (!this.userId) {
+            throw new Meteor.Error(
+                'not-authorized',
+                'Você precisa estar logado para deletar tarefas.'
+            );
+        }
+
+        // Verifica se taskIds é um array de strings
+        check(taskIds, [String]);
+
+        // Remove apenas as tarefas que pertencem ao usuário logado
+        return await TasksCollection.removeAsync({
+            _id: { $in: taskIds },
+            userId: this.userId,
+        });
     },
 });

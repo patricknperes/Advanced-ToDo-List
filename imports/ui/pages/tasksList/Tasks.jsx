@@ -1,17 +1,18 @@
 import { Meteor } from 'meteor/meteor';
 import { useTracker, useSubscribe } from 'meteor/react-meteor-data';
 import React from 'react';
-import { Box, Typography, CircularProgress, Button, Chip, TextField } from '@mui/material';
+import { CircularProgress, IconButton } from '@mui/material';
 import { TasksCollection } from '../../../api/TasksCollection';
 import { Task } from './Task';
 import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import TasksListStyle from './tasksList.module';
-
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import DisabledVisibleIcon from '@mui/icons-material/DisabledVisible';
 import PublicIcon from '@mui/icons-material/Public';
 import AddIcon from '@mui/icons-material/Add';
+import Checkbox from '@mui/material/Checkbox';
 
 const Tasks = () => {
     const navigate = useNavigate();
@@ -22,11 +23,10 @@ const Tasks = () => {
     });
 
     const [search, setSearch] = React.useState('');
-
     const [showPublicTasks, setShowPublicTasks] = React.useState(false);
     const [hideCompletedTasks, setHideCompletedTasks] = React.useState(false);
-
     const [disableChip, setDisableChip] = React.useState(false);
+    const [selectedTasks, setSelectedTasks] = React.useState([]);
 
     React.useEffect(() => {
         let newFilter = {};
@@ -76,6 +76,32 @@ const Tasks = () => {
         return { tasks, isTasksLoading: false };
     });
 
+    const handleToggleSelectAll = () => {
+        if (selectedTasks.length === tasks.length) {
+            setSelectedTasks([]);
+        } else {
+            setSelectedTasks(tasks.map(task => task._id));
+        }
+    };
+
+    const handleToggleTask = (taskId) => {
+        setSelectedTasks(prev =>
+            prev.includes(taskId)
+                ? prev.filter(id => id !== taskId)
+                : [...prev, taskId]
+        );
+    };
+
+    const handleDeleteSelected = () => {
+        Meteor.call('tasks.deleteMultiple', selectedTasks, (error) => {
+            if (error) {
+                console.error('Error deleting tasks:', error);
+            } else {
+                setSelectedTasks([]);
+            }
+        });
+    };
+
     const deleteTask = (task) => {
         Meteor.call('tasks.delete', { _id: task._id }, (error) => {
             if (error) {
@@ -117,12 +143,11 @@ const Tasks = () => {
 
     return (
         <TasksListStyle.TasksContainer>
-
             <TasksListStyle.TasksListMenu>
                 <TasksListStyle.TasksListMenuLeft>
                     <TasksListStyle.TasksListMenuChip
                         icon={<PublicIcon />}
-                        label="Tarefas Públicas"
+                        label="Públicas"
                         clickable
                         disabled={disableChip}
                         onClick={togglePublicTasks}
@@ -132,7 +157,7 @@ const Tasks = () => {
 
                     <TasksListStyle.TasksListMenuChip
                         icon={<DisabledVisibleIcon />}
-                        label="Ocultar Concluídas"
+                        label="Concluídas"
                         clickable
                         disabled={disableChip}
                         onClick={toggleCompletedTasks}
@@ -157,12 +182,18 @@ const Tasks = () => {
                             },
                         }}
                     />
-
                 </TasksListStyle.TasksListMenuLeft>
 
                 <TasksListStyle.TasksListMenuRight>
+                    <IconButton
+                        onClick={handleDeleteSelected}
+                        disabled={selectedTasks.length === 0}
+                    >
+                        <DeleteOutlineIcon />
+                    </IconButton>
 
                     <TasksListStyle.TasksListMenuButton
+                        size="large"
                         variant="contained"
                         onClick={handleAddNewTask}
                         type="submit"
@@ -170,12 +201,16 @@ const Tasks = () => {
                     >
                         Nova Tarefa
                     </TasksListStyle.TasksListMenuButton>
-
                 </TasksListStyle.TasksListMenuRight>
             </TasksListStyle.TasksListMenu>
 
             <TasksListStyle.TasksListLabelContainer>
                 <TasksListStyle.TasksListLabelLeft>
+                    <Checkbox
+                        checked={tasks.length > 0 && selectedTasks.length === tasks.length}
+                        onChange={handleToggleSelectAll}
+                    />
+
                     <TasksListStyle.TasksListLabelTitle>
                         Lista de Tarefas
                     </TasksListStyle.TasksListLabelTitle>
@@ -196,60 +231,36 @@ const Tasks = () => {
                 </TasksListStyle.TasksListLabelRigth>
             </TasksListStyle.TasksListLabelContainer>
 
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flexGrow: 1,
-                    overflow: 'auto',
-                }}
-            >
-                {isTasksLoading ? (
-                    <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
-                        <CircularProgress sx={{ color: '#4A5C7E' }} />
-                    </Box>
-                ) : tasks.length > 0 ? (
-                    tasks.map((task) => (
-                        <Task
-                            key={task._id}
-                            task={task}
-                            onDeleteClick={deleteTask}
-                            onStatusChange={updateTaskStatus}
-                        />
-                    ))
-                ) : (
-                    <Box
-                        sx={{
-                            p: 3,
-                            textAlign: 'center',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Box
-                            component="img"
-                            src="/images/wired-outline-262-emoji-wow-hover-pinch.gif"
-                            alt="Empty tasks"
-                            sx={{
-                                width: 300,
-                                height: 300,
-                                mt: 5,
-                                mb: 2,
-                                objectFit: 'cover',
-                                borderRadius: 1,
-                                color: 'text.secondary',
-                            }}
-                        />
-                        <Typography
-                            color="textSecondary"
-                            sx={{ mt: 1, fontFamily: 'var(--font-family)', fontSize: '24px' }}
-                        >
-                            Você não tem tarefas!
-                        </Typography>
-                    </Box>
-                )}
-            </Box>
+            {isTasksLoading ? (
+                <TasksListStyle.TasksListLoadingContainer>
+                    <CircularProgress sx={{ color: 'var(--color-accent)' }} />
+                    <TasksListStyle.TasksListLoadingText>
+                        Carregando...
+                    </TasksListStyle.TasksListLoadingText>
+                </TasksListStyle.TasksListLoadingContainer>
+            ) : tasks.length > 0 ? (
+                tasks.map((task) => (
+                    <Task
+                        key={task._id}
+                        task={task}
+                        onDeleteClick={deleteTask}
+                        onStatusChange={updateTaskStatus}
+                        onToggleTask={handleToggleTask}
+                        isSelected={selectedTasks.includes(task._id)}
+                    />
+                ))
+            ) : (
+                <TasksListStyle.TasksListNotFoundContainer>
+                    <TasksListStyle.TasksListNotFoundImage
+                        component="img"
+                        src="/assets/taskNotFound.png"
+                        alt="Empty tasks"
+                    />
+                    <TasksListStyle.TasksListNotFoundText>
+                        Nenhuma tarefa encontrada
+                    </TasksListStyle.TasksListNotFoundText>
+                </TasksListStyle.TasksListNotFoundContainer>
+            )}
         </TasksListStyle.TasksContainer>
     );
 };

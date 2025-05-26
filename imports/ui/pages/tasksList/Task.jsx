@@ -1,23 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import {
-    Box,
-    Typography,
-    MenuItem,
-    Select,
-    IconButton,
-    FormControl,
-    CircularProgress,
-    Icon,
-    Tooltip,
-} from '@mui/material';
+import { MenuItem, IconButton, CircularProgress, Tooltip } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useNavigate } from 'react-router-dom';
+import TasksListStyle from './tasksList.module';
+import Checkbox from '@mui/material/Checkbox';
 
-export const Task = ({ task, onDeleteClick, onStatusChange }) => {
+export const Task = ({ task, onDeleteClick, onStatusChange, onToggleTask, isSelected }) => {
     const navigate = useNavigate();
 
     const handleEdit = () => {
@@ -44,23 +35,9 @@ export const Task = ({ task, onDeleteClick, onStatusChange }) => {
 
     if (isLoading) {
         return (
-            <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '16px',
-                    borderRadius: '8px',
-                    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-                    backgroundColor: '#f9f9f9',
-                    height: '72px',
-                }}
-            >
-                <CircularProgress size={24} sx={{ color: '#4A5C7E' }} />
-                <Typography sx={{ ml: 2, fontFamily: 'var(--font-family)', fontSize: '14px', color: '#4A5C7E' }}>
-                    Carregando...
-                </Typography>
-            </Box>
+            <TasksListStyle.TasksListLoadingContainer>
+                <CircularProgress size={24} sx={{ color: 'var(--color-accent)' }} />
+            </TasksListStyle.TasksListLoadingContainer>
         );
     }
 
@@ -69,93 +46,58 @@ export const Task = ({ task, onDeleteClick, onStatusChange }) => {
     const userFirstName = userNamePartes[0].charAt(0).toUpperCase() + userNamePartes[0].slice(1);
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                padding: '8px 16px',
-                width: 'auto',
-                '&:hover': {
-                    backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                },
-            }}
-        >
-            <Icon sx={{ color: '#4A5C7E', mb: 1, mr: 2.5 }}>
-                <TaskOutlinedIcon fontSize="small" />
-            </Icon>
-
-            <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
-                <Tooltip title={`descrição: ${task.descricao}`} placement="bottom-start">
-                    <Typography
-                        sx={{
-                            fontFamily: 'var(--font-family)',
-                            fontWeight: 400,
-                            fontSize: '14px',
-                            width: '70%',
-                            color: '#4A5C7E',
-                            textDecoration: task.isChecked ? 'line-through' : 'none',
-                            overflow: 'hidden',
-                            whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis',
-                        }}
-                    >
-                        {task.name}
-                    </Typography>
-                </Tooltip>
-
-                <Typography
-                    sx={{
-                        fontFamily: 'var(--font-family)',
-                        fontWeight: 400,
-                        fontSize: '14px',
-                        width: '10%',
-                        color: '#4A5C7E',
-                    }}
-                >
-                    {userFirstName}
-                </Typography>
-
-                <Box sx={{ width: '15%' }}>
-                    <FormControl fullWidth size="small">
-                        <Select
-                            value={task.status}
-                            onChange={(e) => onStatusChange(task, e.target.value)}
-                            sx={{
-                                height: '30px',
-                                fontSize: '14px',
-                                fontFamily: 'var(--font-family)',
-                                '& .MuiOutlinedInput-notchedOutline': {
-                                    borderColor: '#4A5C7E',
-                                },
-                                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                                    borderColor: '#4A5C7E',
-                                },
-                            }}
-                            disabled={block}
-                            renderValue={(value) => statusDisplay[value] || value}
-                        >
-                            <MenuItem value="to-do">Pendente</MenuItem>
-                            <MenuItem value="in_progress">Em andamento</MenuItem>
-                            <MenuItem value="completed">Concluído</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-            </Box>
-
-            <Box sx={{ display: 'flex', gap: 1 }}>
-                <IconButton size="small" onClick={handleEdit} sx={{ color: '#4A5C7E' }} disabled={block}>
-                    <EditIcon fontSize="small" />
-                </IconButton>
-
-                <IconButton
-                    size="small"
-                    onClick={() => onDeleteClick(task)}
-                    sx={{ color: 'red' }}
+        <TasksListStyle.TasksListComponetContainer>
+            <TasksListStyle.TasksListComponetLeft>
+                <Checkbox
+                    checked={isSelected}
+                    onChange={() => onToggleTask(task._id)}
                     disabled={block}
-                >
-                    <DeleteOutlineIcon fontSize="small" />
-                </IconButton>
-            </Box>
-        </Box>
+                />
+
+                <TasksListStyle.TasksListTooltip title={`Descrição: ${task.descricao}`} placement="bottom-start">
+                    <TasksListStyle.TasksListComponetTitle>
+                        {task.name}
+                    </TasksListStyle.TasksListComponetTitle>
+                </TasksListStyle.TasksListTooltip>
+            </TasksListStyle.TasksListComponetLeft>
+
+            <TasksListStyle.TasksListComponetRigth>
+                <TasksListStyle.TasksListComponetTitle>
+                    {userFirstName}
+                </TasksListStyle.TasksListComponetTitle>
+
+                <TasksListStyle.TasksListComponetFormControl>
+                    <TasksListStyle.TasksListComponetSelect
+                        value={task.status}
+                        onChange={(e) => onStatusChange(task, e.target.value)}
+                        disabled={block}
+                        renderValue={(value) => statusDisplay[value] || value}
+                    >
+                        <MenuItem value="to-do">Pendente</MenuItem>
+                        <MenuItem value="in_progress">Em andamento</MenuItem>
+                        <MenuItem value="completed">Concluído</MenuItem>
+                    </TasksListStyle.TasksListComponetSelect>
+                </TasksListStyle.TasksListComponetFormControl>
+
+                <TasksListStyle.TasksListComponetButtonContent>
+                    <IconButton
+                        size="small"
+                        onClick={handleEdit}
+                        disabled={block}
+                    >
+                        <EditIcon />
+                    </IconButton>
+
+                    <IconButton
+                        size="small"
+                        onClick={() => onDeleteClick(task)}
+                        sx={{ color: '#E83F25' }}
+                        disabled={block}
+                    >
+                        <DeleteOutlineIcon />
+                    </IconButton>
+                </TasksListStyle.TasksListComponetButtonContent>
+            </TasksListStyle.TasksListComponetRigth>
+        </TasksListStyle.TasksListComponetContainer>
     );
 };

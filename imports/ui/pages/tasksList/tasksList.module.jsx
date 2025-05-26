@@ -1,8 +1,5 @@
 import React from "react";
-import { Box, Button, styled, Chip, TextField } from "@mui/material";
-import { Typography } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-
+import { Box, Button, styled, Chip, TextField, FormControl, Select, Typography, Tooltip } from "@mui/material";
 
 const TasksListStyle = {
 
@@ -64,6 +61,7 @@ const TasksListStyle = {
         display: "flex",
         flexDirection: "row",
         gap: "1rem",
+        alignItems: "center",
     })),
 
     TasksListMenuChip: styled(Chip)(({ theme }) => ({
@@ -112,7 +110,8 @@ const TasksListStyle = {
     TasksListMenuRight: styled(Box)(({ theme }) => ({
         display: "flex",
         flexDirection: "row",
-        gap: "1rem",
+        gap: "var(--mb-0-5)",
+        alignItems: "center",
     })),
 
     TasksListMenuButton: styled(Button)(({ theme }) => ({
@@ -133,13 +132,13 @@ const TasksListStyle = {
         flexDirection: "row",
         justifyContent: "space-between",
         paddingBottom: "var(--mb-1)",
-        borderBottom: "0.1px solid var(--text-color)",
+        borderBottom: "0.1px solid rgba(183, 183, 183, 0.5)",
     })),
 
     TasksListLabelTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontSize: "var(--font-size-base)",
-        color: "var(--title-color)",
+        color: "var(--text-color)",
         display: "flex",
         justifyContent: "center",
     })),
@@ -149,7 +148,8 @@ const TasksListStyle = {
     TasksListLabelLeft: styled(Box)(({ theme }) => ({
         display: "flex",
         flexDirection: "row",
-        gap: "1rem",
+        gap: "var(--mb-0-25)",
+        alignItems: "center",
     })),
 
     // ========== Label Rigth ==========
@@ -159,8 +159,142 @@ const TasksListStyle = {
         gridTemplateColumns: "repeat(3, 130px)",
         flexDirection: "row",
         gap: "1rem",
-
+        alignItems: "center",
     })),
+
+    // ========== Task Componet Style ==========
+
+    TasksListComponetContainer: styled(Box)(({ theme }) => ({
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: "1.25rem 0",
+        borderBottom: "0.1px solid rgba(183, 183, 183, 0.5)",
+        "&:hover": {
+            backgroundColor: "rgba(0, 0, 0, 0.04)",
+        },
+    })),
+
+    TasksListComponetTitle: styled(Typography)(({ theme }) => ({
+        fontFamily: "var(--font-family)",
+        fontSize: "var(--font-size-base)",
+        color: "var(--title-color)",
+        display: "flex",
+        justifyContent: "center",
+    })),
+
+    // ========== Componet Left ==========
+
+    TasksListComponetLeft: styled(Box)(({ theme }) => ({
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: "var(--mb-0-25)",
+    })),
+
+    // ========== Componet Rigth ==========
+
+    TasksListComponetRigth: styled(Box)(({ theme }) => ({
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 130px)",
+        flexDirection: "row",
+        gap: "1rem",
+        alignItems: "center",
+    })),
+
+    TasksListComponetFormControl: styled(FormControl)(({ theme }) => ({
+        width: "100%",
+        "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "var(--title-color)",
+        },
+        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "var(--title-color)",
+        },
+    })),
+
+    TasksListComponetSelect: styled(Select)(({ theme }) => ({
+        height: "2rem",
+        color: "var(--text-color)",
+        fontSize: "var(--font-size-base)",
+        fontFamily: "var(--font-family)",
+        "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "var(--text-color)",
+        },
+        "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "var(--title-color)",
+        },
+    })),
+
+    TasksListComponetButtonContent: styled(Box)(({ theme }) => ({
+        display: "flex",
+        justifyContent: "center",
+        gap: "0.5rem",
+    })),
+
+    // ========== Task Not Found ==========
+
+    TasksListNotFoundContainer: styled(Box)(({ theme }) => ({
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "2.5rem 2rem",
+        textAlign: "center",
+    })),
+
+    TasksListNotFoundImage: styled(Box)(({ theme }) => ({
+        width: "100%",
+        maxWidth: "650px",
+        height: "auto",
+        marginBottom: "var(--mb-2)",
+    })),
+
+    TasksListNotFoundText: styled(Typography)(({ theme }) => ({
+        fontFamily: "var(--font-family)",
+        fontSize: "var(--font-size-larger)",
+        color: "var(--title-color)",
+        textTransform: "uppercase",
+        marginTop: "1rem",
+    })),
+
+    // ========== isLoading ==========
+
+    TasksListLoadingContainer: styled(Box)(({ theme }) => ({
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "2.5rem 2rem",
+        backgroundColor: "var(--container-color)",
+    })),
+
+    TasksListLoadingText: styled(Typography)(({ theme }) => ({
+        fontFamily: "var(--font-family)",
+        fontSize: "var(--font-size-base)",
+        color: "var(--title-color)",
+        marginLeft: "1rem",
+    })),
+
+    // ========== Tooltip ==========
+
+    TasksListTooltip: styled(({ className, ...props }) => (
+        <Tooltip
+            {...props}
+            classes={{ tooltip: className }}
+        />
+    ))(({ theme }) => ({
+        fontFamily: "var(--font-family)",
+        fontSize: "var(--font-size-base)",
+        color: "var(--title-color)",
+        backgroundColor: "var(--body-color)",
+        padding: "1rem",
+        borderRadius: "0.75rem",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+        maxWidth: 350,
+        lineHeight: 1.6,
+        fontWeight: 400,
+        textAlign: "left",
+    })),
+
 
 };
 
