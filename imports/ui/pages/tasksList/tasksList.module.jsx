@@ -159,6 +159,7 @@ const TasksListStyle = {
         gridTemplateColumns: "repeat(3, 130px)",
         flexDirection: "row",
         gap: "1rem",
+
     })),
 
 };
