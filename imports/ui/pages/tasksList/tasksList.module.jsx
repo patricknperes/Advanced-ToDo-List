@@ -77,7 +77,9 @@ const TasksListStyle = {
             color: "var(--text-color)",
         },
         "&.MuiChip-filled": {
-            borderColor: "var(--title-color)",
+            border: "1px solid var(--title-color)", // Adiciona a borda no estado ativo
+            borderColor: "var(--title-color)", // Garante que a cor da borda seja a mesma
+            backgroundColor: "var(--container-color)",
             color: "var(--title-color)",
         },
     })),
@@ -263,7 +265,8 @@ const TasksListStyle = {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "2.5rem 2rem",
+        padding: "1.25rem 0",
+        gap: "1rem",
         backgroundColor: "var(--container-color)",
     })),
 

@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { useTracker, useSubscribe } from 'meteor/react-meteor-data';
-import React from 'react';
-import { CircularProgress, IconButton } from '@mui/material';
+import React, { useState } from 'react';
+import { CircularProgress, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button, Pagination, Box } from '@mui/material';
 import { TasksCollection } from '../../../api/TasksCollection';
 import { Task } from './Task';
 import { useNavigate } from 'react-router-dom';
@@ -16,6 +16,9 @@ import Checkbox from '@mui/material/Checkbox';
 
 const Tasks = () => {
     const navigate = useNavigate();
+    const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1); // State for current page
+    const itemsPerPage = 4; // Number of tasks per page
 
     const [filter, setFilter] = React.useState({
         $or: [{ userId: Meteor.userId() }],
@@ -76,6 +79,12 @@ const Tasks = () => {
         return { tasks, isTasksLoading: false };
     });
 
+    // Calculate pagination details
+    const totalPages = Math.ceil(tasks.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedTasks = tasks.slice(startIndex, endIndex);
+
     const handleToggleSelectAll = () => {
         if (selectedTasks.length === tasks.length) {
             setSelectedTasks([]);
@@ -93,6 +102,10 @@ const Tasks = () => {
     };
 
     const handleDeleteSelected = () => {
+        setDeleteDialogOpen(true);
+    };
+
+    const confirmDeleteSelected = () => {
         Meteor.call('tasks.deleteMultiple', selectedTasks, (error) => {
             if (error) {
                 console.error('Error deleting tasks:', error);
@@ -100,6 +113,11 @@ const Tasks = () => {
                 setSelectedTasks([]);
             }
         });
+        setDeleteDialogOpen(false);
+    };
+
+    const handleCloseDialog = () => {
+        setDeleteDialogOpen(false);
     };
 
     const deleteTask = (task) => {
@@ -139,6 +157,10 @@ const Tasks = () => {
 
     const handleSearch = (event) => {
         setSearch(event.target.value);
+    };
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
     };
 
     return (
@@ -238,8 +260,8 @@ const Tasks = () => {
                         Carregando...
                     </TasksListStyle.TasksListLoadingText>
                 </TasksListStyle.TasksListLoadingContainer>
-            ) : tasks.length > 0 ? (
-                tasks.map((task) => (
+            ) : paginatedTasks.length > 0 ? (
+                paginatedTasks.map((task) => (
                     <Task
                         key={task._id}
                         task={task}
@@ -261,6 +283,34 @@ const Tasks = () => {
                     </TasksListStyle.TasksListNotFoundText>
                 </TasksListStyle.TasksListNotFoundContainer>
             )}
+
+            {totalPages > 0 && (
+                <Box sx={{ display: 'flex', justifyContent: 'end', marginTop: '1.5rem' }}>
+                    <Pagination
+                        count={totalPages}
+                        page={currentPage}
+                        onChange={handlePageChange}
+                        color="primary"
+                    />
+                </Box>
+            )}
+
+            <Dialog
+                open={deleteDialogOpen}
+                onClose={handleCloseDialog}
+                aria-labelledby="delete-dialog-title"
+            >
+                <DialogTitle id="delete-dialog-title">Confirmar Exclusão de Tarefas</DialogTitle>
+                <DialogContent>
+                    Tem certeza de que deseja excluir {selectedTasks.length} tarefa{selectedTasks.length > 1 ? 's' : ''} selecionada{selectedTasks.length > 1 ? 's' : ''}?
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseDialog} sx={{ color: 'var(--text-color)' }}> Cancelar</Button>
+                    <Button onClick={confirmDeleteSelected} color="error" autoFocus>
+                        Excluir
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </TasksListStyle.TasksContainer>
     );
 };
