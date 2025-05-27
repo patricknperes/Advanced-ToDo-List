@@ -14,6 +14,12 @@ const TasksListStyle = {
         padding: "3rem 2rem",
         display: "flex",
         flexDirection: "column",
+        [theme.breakpoints.down("md")]: {
+            padding: "3rem 1.5rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+            padding: "3rem 1.5rem",
+        },
     })),
 
     TasksListTitleContainer: styled(Box)(({ theme }) => ({
@@ -22,19 +28,36 @@ const TasksListStyle = {
         alignItems: "center",
         marginBottom: "var(--mb-2)",
         gap: "1rem",
+        animation: "fadeInTitle 1s ease-out 0.4s forwards",
+        opacity: 0,
+        "@keyframes fadeInTitle": {
+            "0%": { opacity: 0, transform: "translateY(15px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
     })),
 
     TasksListTitle: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-semi-bold)",
+        fontSize: "var(--font-size-extra-large)",
         color: "var(--title-color)",
     })),
 
     TasksListText: styled(Typography)(({ theme }) => ({
         fontFamily: "var(--font-family)",
         fontWeight: "var(--font-normal)",
+        fontSize: "var(--font-size-larger)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-0-25)",
+        animation: "fadeInText 1s ease-out 0.2s forwards",
+        opacity: 0,
+        "@keyframes fadeInText": {
+            "0%": { opacity: 0, transform: "translateY(15px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+        [theme.breakpoints.down("md")]: {
+            marginBottom: "0",
+        },
     })),
 
     TasksContainer: styled(Box)(({ theme }) => ({
@@ -53,6 +76,12 @@ const TasksListStyle = {
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: "var(--mb-2-5)",
+        [theme.breakpoints.down("md")]: {
+            flexDirection: "column",
+            gap: "1rem",
+        },
+        [theme.breakpoints.down("sm")]: {
+        },
     })),
 
     // ========== Menu Left ==========
@@ -114,6 +143,10 @@ const TasksListStyle = {
         flexDirection: "row",
         gap: "var(--mb-0-5)",
         alignItems: "center",
+        [theme.breakpoints.down("md")]: {
+        },
+        [theme.breakpoints.down("sm")]: {
+        },
     })),
 
     TasksListMenuButton: styled(Button)(({ theme }) => ({
@@ -124,6 +157,9 @@ const TasksListStyle = {
         "&.MuiButton-outlined": {
             borderColor: "var(--title-color)",
             color: "var(--title-color)",
+        },
+        [theme.breakpoints.down("md")]: {
+            fontSize: "var(--font-size-base)",
         },
     })),
 
@@ -162,6 +198,13 @@ const TasksListStyle = {
         flexDirection: "row",
         gap: "1rem",
         alignItems: "center",
+        [theme.breakpoints.down("md")]: {
+            gridTemplateColumns: "repeat(3, 100px)",
+        },
+        [theme.breakpoints.down("sm")]: {
+            gridTemplateColumns: "repeat(1, 150px)",
+            gap: "0.25rem",
+        },
     })),
 
     // ========== Task Componet Style ==========
@@ -171,6 +214,7 @@ const TasksListStyle = {
         flexDirection: "row",
         justifyContent: "space-between",
         padding: "1.25rem 0",
+        gap: "1rem",
         borderBottom: "0.1px solid rgba(183, 183, 183, 0.5)",
         "&:hover": {
             backgroundColor: "rgba(0, 0, 0, 0.04)",
@@ -202,6 +246,13 @@ const TasksListStyle = {
         flexDirection: "row",
         gap: "1rem",
         alignItems: "center",
+        [theme.breakpoints.down("md")]: {
+            gridTemplateColumns: "repeat(3, 100px)",
+        },
+        [theme.breakpoints.down("sm")]: {
+            gridTemplateColumns: "repeat(1, 150px)",
+            gap: "0.50rem",
+        },
     })),
 
     TasksListComponetFormControl: styled(FormControl)(({ theme }) => ({
@@ -231,6 +282,9 @@ const TasksListStyle = {
         display: "flex",
         justifyContent: "center",
         gap: "0.5rem",
+        [theme.breakpoints.down("md")]: {
+            gap: "0.25rem",
+        },
     })),
 
     // ========== Task Not Found ==========

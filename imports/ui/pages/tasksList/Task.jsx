@@ -83,7 +83,16 @@ export const Task = ({ task, onDeleteClick, onStatusChange, onToggleTask, isSele
                     />
 
                     <TasksListStyle.TasksListTooltip title={`Descrição: ${task.descricao}`} placement="bottom-start">
-                        <TasksListStyle.TasksListComponetTitle>
+                        <TasksListStyle.TasksListComponetTitle
+                            onClick={block ? undefined : handleEdit}
+                            sx={{
+                                cursor: block ? 'default' : 'pointer',
+                                color: block ? 'text.disabled' : 'text.primary',
+                                '&:hover': {
+                                    textDecoration: block ? 'none' : 'underline',
+                                }
+                            }}
+                        >
                             {task.name}
                         </TasksListStyle.TasksListComponetTitle>
                     </TasksListStyle.TasksListTooltip>

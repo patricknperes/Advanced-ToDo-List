@@ -147,6 +147,17 @@ const EditTasksStyle = {
         "& .MuiOutlinedInput-root:hover .MuiInputAdornment-root .MuiSvgIcon-root": {
             color: "var(--color-accent)",
         },
+        // Estilo para o notchedOutline quando desabilitado
+        "& .MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline": {
+            borderColor: "var(--text-color)",
+        },
+        "& .MuiOutlinedInput-root.Mui-disabled .MuiInputAdornment-root .MuiSvgIcon-root": {
+            color: "var(--text-color)",
+        },
+        "& .MuiOutlinedInput-root.Mui-disabled .MuiInputBase-input": {
+            color: "var(--text-color)",
+            WebkitTextFillColor: "var(--text-color)",
+        },
     })),
 
     EditTasksButtonOutlined: styled(Button)(({ theme }) => ({
