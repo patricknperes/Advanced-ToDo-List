@@ -9,12 +9,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import CancelIcon from '@mui/icons-material/Cancel';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Stack from '@mui/material/Stack';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { MenuItem, Select, InputAdornment, FormControl, InputLabel, Alert, Snackbar, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 import { TasksCollection } from '../../../api/TasksCollection';
 
 const EditTaskForm = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({
@@ -159,6 +163,7 @@ const EditTaskForm = () => {
                         label="Título"
                         variant="outlined"
                         placeholder="Digite o título da tarefa"
+                        size={isSmallScreen ? 'small' : 'medium'}
                         type="text"
                         name="title"
                         value={formData.title}
@@ -172,6 +177,7 @@ const EditTaskForm = () => {
                         label="Descrição"
                         variant="outlined"
                         placeholder="Digite a descrição da tarefa"
+                        size={isSmallScreen ? 'small' : 'medium'}
                         type="text"
                         name="description"
                         rows={4}
@@ -187,6 +193,7 @@ const EditTaskForm = () => {
                             id="dueDate"
                             label="Data de Vencimento"
                             variant="outlined"
+                            size={isSmallScreen ? 'small' : 'medium'}
                             slotProps={{
                                 input: {
                                     startAdornment: (
@@ -214,6 +221,7 @@ const EditTaskForm = () => {
                         <FormControl variant="outlined" fullWidth>
                             <InputLabel
                                 id="privacy-label"
+                                size={isSmallScreen ? 'small' : 'medium'}
                                 sx={{
                                     fontFamily: 'var(--font-family)',
                                     color: 'var(--text-color)',
@@ -231,6 +239,7 @@ const EditTaskForm = () => {
                             <Select
                                 labelId="privacy-label"
                                 id="privacy"
+                                size={isSmallScreen ? 'small' : 'medium'}
                                 label="Privacidade"
                                 name="privacy"
                                 value={formData.privacy}
@@ -299,21 +308,22 @@ const EditTaskForm = () => {
                         <EditTasksStyle.EditTasksButtonText
                             variant="text"
                             startIcon={<ArrowBackIcon />}
+                            size={isSmallScreen ? 'small' : 'large'}
                             onClick={() => navigate('/dashboard')}
                             aria-label="Voltar para o dashboard"
                         >
                             Voltar
                         </EditTasksStyle.EditTasksButtonText>
 
-                        <Stack spacing={2} direction="row">
+                        <Stack spacing={1} direction="row">
                             {isEditing ? (
-                                <>
+                                <EditTasksStyle.EditTasksButtonOutlinedContainer>
                                     <EditTasksStyle.EditTasksButtonOutlined
                                         variant="outlined"
                                         startIcon={<CancelIcon />}
+                                        size={isSmallScreen ? 'small' : 'large'}
                                         onClick={handleCancelClick}
                                         sx={{
-                                            mr: 1,
                                             backgroundColor: '#d32f2f',
                                             color: 'white',
                                             borderColor: '#d32f2f',
@@ -339,17 +349,19 @@ const EditTaskForm = () => {
                                         }}
                                         onClick={handleSubmit}
                                         type="submit"
+                                        size={isSmallScreen ? 'small' : 'large'}
                                         aria-label="Salvar alterações da tarefa"
                                         disabled={block}
                                     >
                                         Salvar
                                     </EditTasksStyle.EditTasksButtonOutlined>
-                                </>
+                                </EditTasksStyle.EditTasksButtonOutlinedContainer>
                             ) : (
-                                <>
+                                <EditTasksStyle.EditTasksButtonOutlinedContainer>
                                     <EditTasksStyle.EditTasksButtonOutlined
                                         variant="contained"
                                         startIcon={<EditIcon />}
+                                        size={isSmallScreen ? 'small' : 'large'}
                                         sx={{
                                             boxShadow: 'none',
                                             backgroundColor: '#FFB22C',
@@ -367,6 +379,7 @@ const EditTaskForm = () => {
                                     <EditTasksStyle.EditTasksButtonOutlined
                                         variant="outlined"
                                         startIcon={<DeleteIcon />}
+                                        size={isSmallScreen ? 'small' : 'large'}
                                         onClick={handleDeleteClick}
                                         sx={{
                                             backgroundColor: '#d32f2f',
@@ -382,7 +395,7 @@ const EditTaskForm = () => {
                                     >
                                         Excluir
                                     </EditTasksStyle.EditTasksButtonOutlined>
-                                </>
+                                </EditTasksStyle.EditTasksButtonOutlinedContainer>
                             )}
                         </Stack>
                     </Stack>
