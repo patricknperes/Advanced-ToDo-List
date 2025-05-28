@@ -298,7 +298,6 @@ const UserProfileStyle = {
         transition: "transform 0.2s ease, box-shadow 0.2s ease",
         "&:hover": {
             backgroundColor: "var(--color-accent-dark)",
-            transform: "scale(1.05)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
         },
         "&:active": {
@@ -316,12 +315,6 @@ const UserProfileStyle = {
     UserProfileCardButtonContainer: styled(Box)(({ theme }) => ({
         display: "flex",
         gap: "0.5rem",
-        animation: "fadeInButtons 1s ease-out 2s forwards",
-        opacity: 0,
-        "@keyframes fadeInButtons": {
-            "0%": { opacity: 0, transform: "scale(0.9)" },
-            "100%": { opacity: 1, transform: "scale(1)" },
-        },
         [theme.breakpoints.down("sm")]: {
             gap: "0.5rem",
         },
