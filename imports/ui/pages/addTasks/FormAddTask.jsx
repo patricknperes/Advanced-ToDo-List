@@ -7,6 +7,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import AddIcon from '@mui/icons-material/Add';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Stack from '@mui/material/Stack';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { MenuItem, Select, InputAdornment, FormControl, InputLabel, Snackbar, Alert, CircularProgress } from '@mui/material';
 
 const FormAddTask = () => {
@@ -18,6 +19,9 @@ const FormAddTask = () => {
             isLoading: !subscription.ready(),
         };
     }, []);
+
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -111,6 +115,7 @@ const FormAddTask = () => {
                         label="Título"
                         variant="outlined"
                         placeholder="Digite o título da tarefa"
+                        size={isSmallScreen ? 'small' : 'medium'}
                         type="text"
                         value={title}
                         onChange={(e) => {
@@ -128,6 +133,7 @@ const FormAddTask = () => {
                         label="Descrição"
                         variant="outlined"
                         placeholder="Digite a descrição da tarefa"
+                        size={isSmallScreen ? 'small' : 'medium'}
                         type="text"
                         rows={4}
                         multiline
@@ -147,6 +153,7 @@ const FormAddTask = () => {
                             id="task-due-date"
                             label="Data de Vencimento"
                             variant="outlined"
+                            size={isSmallScreen ? 'small' : 'medium'}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -176,6 +183,7 @@ const FormAddTask = () => {
                         <FormControl variant="outlined" fullWidth error={!!errors.privacy}>
                             <InputLabel
                                 id="privacy-label"
+                                size={isSmallScreen ? 'small' : 'medium'}
                                 sx={{
                                     fontFamily: 'var(--font-family)',
                                     color: 'var(--text-color)',
@@ -189,6 +197,7 @@ const FormAddTask = () => {
                             <Select
                                 labelId="privacy-label"
                                 id="task-privacy"
+                                size={isSmallScreen ? 'small' : 'medium'}
                                 label="Privacidade"
                                 value={privacy}
                                 onChange={(e) => {
@@ -236,6 +245,7 @@ const FormAddTask = () => {
                         <AddTasksStyle.AddTasksButtonText
                             variant="text"
                             startIcon={<ArrowBackIcon />}
+                            size={isSmallScreen ? 'small' : 'large'}
                             onClick={() => navigate('/dashboard')}
                             aria-label="Voltar para tarefas"
                         >
@@ -244,6 +254,7 @@ const FormAddTask = () => {
                         <AddTasksStyle.AddTasksButtonOutlined
                             variant="contained"
                             startIcon={<AddIcon />}
+                            size={isSmallScreen ? 'small' : 'large'}
                             type="submit"
                             disabled={isSubmitting}
                             aria-label="Adicionar tarefa"
