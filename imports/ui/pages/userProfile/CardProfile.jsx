@@ -13,6 +13,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import UserProfileStyle from './userProfile.module.jsx';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const CardProfile = () => {
     const fileInputRef = useRef(null);
@@ -23,6 +24,9 @@ const CardProfile = () => {
             isLoading: !handler.ready(),
         };
     }, []);
+
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const [isEditing, setIsEditing] = useState(false);
     const [snackbar, setSnackbar] = useState({
@@ -222,18 +226,13 @@ const CardProfile = () => {
                 </UserProfileStyle.UserProfileTextLeft>
             </UserProfileStyle.UserProfileCardLeft>
             <UserProfileStyle.UserProfileCardRight>
-                <UserProfileStyle.UserProfileTitle variant="h3">
+                <UserProfileStyle.UserProfileTitle>
                     Editar Perfil
                 </UserProfileStyle.UserProfileTitle>
-                <UserProfileStyle.UserProfileText variant="body1">
+                <UserProfileStyle.UserProfileText>
                     Mantenha suas informações atualizadas
                 </UserProfileStyle.UserProfileText>
                 <UserProfileStyle.UserProfileFormContainer>
-                    {snackbar.open && (
-                        <Alert severity={snackbar.severity} onClose={handleCloseSnackbar} sx={{ mb: 2 }}>
-                            {snackbar.message}
-                        </Alert>
-                    )}
                     <UserProfileStyle.UserProfileCardTextField
                         label="Nome"
                         variant="outlined"
@@ -244,6 +243,7 @@ const CardProfile = () => {
                         disabled={!isEditing}
                         error={!!errors.nome}
                         helperText={errors.nome}
+                        size={isSmallScreen ? 'small' : 'medium'}
                         slotProps={{
                             input: {
                                 startAdornment: (
@@ -264,6 +264,7 @@ const CardProfile = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         disabled
+                        size={isSmallScreen ? 'small' : 'medium'}
                         error={!!errors.email}
                         helperText={errors.email || 'O email não pode ser alterado aqui'}
                         slotProps={{
@@ -290,6 +291,7 @@ const CardProfile = () => {
                                 onChange={handleInputChange}
                                 disabled={!isEditing}
                                 label="Gênero"
+                                size={isSmallScreen ? 'small' : 'medium'}
                                 startAdornment={
                                     <InputAdornment position="start">
                                         <WcIcon aria-hidden="true" />
@@ -310,6 +312,7 @@ const CardProfile = () => {
                             value={formData.dataNascimento}
                             onChange={handleInputChange}
                             disabled={!isEditing}
+                            size={isSmallScreen ? 'small' : 'medium'}
                             error={!!errors.dataNascimento}
                             helperText={errors.dataNascimento}
                             slotProps={{
@@ -331,6 +334,7 @@ const CardProfile = () => {
                         variant="outlined"
                         fullWidth
                         name="empresa"
+                        size={isSmallScreen ? 'small' : 'medium'}
                         value={formData.empresa}
                         onChange={handleInputChange}
                         disabled={!isEditing}
@@ -354,17 +358,18 @@ const CardProfile = () => {
                                 variant="contained"
                                 startIcon={<CreateIcon />}
                                 onClick={handleEditClick}
+                                size={isSmallScreen ? 'small' : 'large'}
                             >
                                 Editar
                             </UserProfileStyle.UserProfileCardButtonOutlined>
                         ) : (
-                            <>
+                            <UserProfileStyle.UserProfileCardButtonContainer>
                                 <UserProfileStyle.UserProfileCardButtonOutlined
                                     variant="outlined"
                                     startIcon={<CancelIcon />}
                                     onClick={handleCancelClick}
+                                    size={isSmallScreen ? 'small' : 'large'}
                                     sx={{
-                                        mr: 1,
                                         backgroundColor: '#d32f2f',
                                         color: 'white',
                                         borderColor: '#d32f2f',
@@ -380,6 +385,7 @@ const CardProfile = () => {
                                     variant="contained"
                                     startIcon={<SaveIcon />}
                                     type="submit"
+                                    size={isSmallScreen ? 'small' : 'large'}
                                     sx={{
                                         backgroundColor: '#1B56FD',
                                         color: 'white',
@@ -390,7 +396,7 @@ const CardProfile = () => {
                                 >
                                     Salvar
                                 </UserProfileStyle.UserProfileCardButtonOutlined>
-                            </>
+                            </UserProfileStyle.UserProfileCardButtonContainer>
                         )}
                     </div>
                 </UserProfileStyle.UserProfileFormContainer>

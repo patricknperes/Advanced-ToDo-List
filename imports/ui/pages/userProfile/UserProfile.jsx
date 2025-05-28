@@ -1,9 +1,6 @@
 import React from 'react';
 import UserProfileStyle from './userProfile.module';
 import CardProfile from './CardProfile';
-const userIcon = '/assets/icons/do-utilizador.png';
-
-
 
 
 const UserProfile = () => {
