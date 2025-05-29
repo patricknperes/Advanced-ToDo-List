@@ -71,9 +71,8 @@ const HomeStyle = {
         },
         [theme.breakpoints.down("sm")]: {
             padding: "2.5rem 2rem",
-            backgroundSize: "450px, cover",
-            backgroundPosition: "530px 40px, center",
             boxSizing: "border-box",
+            borderRadius: "1rem",
         },
     })),
 

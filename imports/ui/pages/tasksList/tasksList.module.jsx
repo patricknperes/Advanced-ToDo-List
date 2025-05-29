@@ -91,6 +91,9 @@ const TasksListStyle = {
         flexDirection: "row",
         gap: "1rem",
         alignItems: "center",
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: 'column-reverse',
+        },
     })),
 
     TasksListMenuChip: styled(Chip)(({ theme }) => ({
@@ -106,10 +109,13 @@ const TasksListStyle = {
             color: "var(--text-color)",
         },
         "&.MuiChip-filled": {
-            border: "1px solid var(--title-color)", // Adiciona a borda no estado ativo
-            borderColor: "var(--title-color)", // Garante que a cor da borda seja a mesma
+            border: "1px solid var(--title-color)",
+            borderColor: "var(--title-color)",
             backgroundColor: "var(--container-color)",
             color: "var(--title-color)",
+        },
+        [theme.breakpoints.down("sm")]: {
+            width: '100%',
         },
     })),
 
@@ -146,6 +152,8 @@ const TasksListStyle = {
         [theme.breakpoints.down("md")]: {
         },
         [theme.breakpoints.down("sm")]: {
+            flexDirection: 'row-reverse',
+            order: '0',
         },
     })),
 
@@ -161,6 +169,9 @@ const TasksListStyle = {
         [theme.breakpoints.down("md")]: {
             fontSize: "var(--font-size-base)",
         },
+        [theme.breakpoints.down("sm")]: {
+            width: '100%',
+        },
     })),
 
     // ========== Label ==========
@@ -171,6 +182,9 @@ const TasksListStyle = {
         justifyContent: "space-between",
         paddingBottom: "var(--mb-1)",
         borderBottom: "0.1px solid rgba(183, 183, 183, 0.5)",
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: "column",
+        },
     })),
 
     TasksListLabelTitle: styled(Typography)(({ theme }) => ({
@@ -199,11 +213,10 @@ const TasksListStyle = {
         gap: "1rem",
         alignItems: "center",
         [theme.breakpoints.down("md")]: {
-            gridTemplateColumns: "repeat(3, 100px)",
+            gridTemplateColumns: "repeat(3, 80px)",
         },
         [theme.breakpoints.down("sm")]: {
-            gridTemplateColumns: "repeat(1, 150px)",
-            gap: "0.25rem",
+            gridTemplateColumns: "repeat(3, auto)",
         },
     })),
 
@@ -218,6 +231,9 @@ const TasksListStyle = {
         borderBottom: "0.1px solid rgba(183, 183, 183, 0.5)",
         "&:hover": {
             backgroundColor: "rgba(0, 0, 0, 0.04)",
+        },
+        [theme.breakpoints.down("sm")]: {
+            flexDirection: "column",
         },
     })),
 
@@ -247,11 +263,10 @@ const TasksListStyle = {
         gap: "1rem",
         alignItems: "center",
         [theme.breakpoints.down("md")]: {
-            gridTemplateColumns: "repeat(3, 100px)",
+            gridTemplateColumns: "repeat(3, 80px)",
         },
         [theme.breakpoints.down("sm")]: {
-            gridTemplateColumns: "repeat(1, 150px)",
-            gap: "0.50rem",
+            gridTemplateColumns: "repeat(3, auto)",
         },
     })),
 

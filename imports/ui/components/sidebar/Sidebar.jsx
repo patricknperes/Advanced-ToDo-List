@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -12,12 +12,12 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import Face2Icon from '@mui/icons-material/Face2';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
-import { DemoProvider, useDemoRouter } from '@toolpad/core/internal';
-
 import Dashboard from '../../pages/dashboard/Dashboard';
 import TasksList from '../../pages/tasksList/TasksList';
 import UserProfile from '../../pages/userProfile/UserProfile';
+import AddTasks from '../../pages/addTasks/AddTasks';
 import NotFound from '../../pages/notFound/NotFound';
+import EditTasks from '../../pages/editTasks/EditTasks';
 
 const NAVIGATION = [
     {
@@ -61,42 +61,28 @@ const demoTheme = createTheme({
         values: {
             xs: 0,
             sm: 600,
-            md: 900, // Alterado de 600 para 900
+            md: 900,
             lg: 1200,
             xl: 1536,
         },
     },
     typography: {
-        fontFamily: 'var(--font-family)', // Defina a fonte desejada
+        fontFamily: 'var(--font-family)',
     },
 });
 
 function DemoPageContent({ pathname }) {
     switch (pathname) {
         case '/dashboard':
-            return (
-                <Box>
-                    <Dashboard />
-                </Box>
-            );
+            return <Box><Dashboard /></Box>;
         case '/tasks':
-            return (
-                <Box>
-                    <TasksList />
-                </Box>
-            );
+            return <Box><TasksList /></Box>;
         case '/profile':
-            return (
-                <Box>
-                    <UserProfile />
-                </Box>
-            );
+            return <Box><UserProfile /></Box>;
+        case '/add-tasks':
+            return <Box><AddTasks /></Box>;
         default:
-            return (
-                <Box>
-                    <NotFound />
-                </Box>
-            );
+            return <Box><NotFound /></Box>;
     }
 }
 
@@ -116,7 +102,14 @@ function DashboardLayoutAccount(props) {
         };
     }, []);
 
-    const router = useDemoRouter('/dashboard');
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const router = React.useMemo(() => ({
+        pathname: location.pathname,
+        searchParams: new URLSearchParams(location.search),
+        navigate: (path) => navigate(path),
+    }), [location, navigate]);
 
     const demoWindow = window !== undefined ? window() : undefined;
 
@@ -131,17 +124,15 @@ function DashboardLayoutAccount(props) {
         };
     }, [user]);
 
-    const authentication = React.useMemo(() => {
-        return {
-            signOut: () => {
-                Meteor.logout((err) => {
-                    if (!err) {
-                        router.push('/login');
-                    }
-                });
-            },
-        };
-    }, [router]);
+    const authentication = React.useMemo(() => ({
+        signOut: () => {
+            Meteor.logout((err) => {
+                if (!err) {
+                    navigate('/login');
+                }
+            });
+        },
+    }), [navigate]);
 
     if (isLoading) {
         return (
@@ -169,26 +160,22 @@ function DashboardLayoutAccount(props) {
     }
 
     return (
-        <DemoProvider window={demoWindow}>
-            <AppProvider
-                session={session}
-                authentication={authentication}
-                navigation={NAVIGATION}
-                router={router}
-                theme={demoTheme}
-                window={demoWindow}
-                branding={{ // Adicionado para alterar o logo
-                    logo: <img src="/assets/logoSynergiaLilas.png" alt="Logo" style={
-                        { width: '130px', height: 'auto', marginLeft: 'var(--mb-0-25)' }
-                    } />,
-                    title: '',
-                }}
-            >
-                <DashboardLayout>
-                    <DemoPageContent pathname={router.pathname} />
-                </DashboardLayout>
-            </AppProvider>
-        </DemoProvider>
+        <AppProvider
+            session={session}
+            authentication={authentication}
+            navigation={NAVIGATION}
+            router={router}
+            theme={demoTheme}
+            window={demoWindow}
+            branding={{
+                logo: <img src="/assets/logoSynergiaLilas.png" alt="Logo" style={{ width: '130px', height: 'auto', marginLeft: 'var(--mb-0-25)' }} />,
+                title: '',
+            }}
+        >
+            <DashboardLayout>
+                <DemoPageContent pathname={router.pathname} />
+            </DashboardLayout>
+        </AppProvider>
     );
 }
 
