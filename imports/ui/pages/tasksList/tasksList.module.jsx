@@ -375,7 +375,7 @@ const TasksListStyle = {
 
     TasksListNotFoundImage: styled(Box)(({ theme }) => ({
         width: "100%",
-        maxWidth: "650px",
+        maxWidth: "550px",
         height: "auto",
         // marginBottom: "var(--mb-2)",
         animation: "fadeInImage 1s ease-out 0.2s forwards",
@@ -391,7 +391,7 @@ const TasksListStyle = {
         fontSize: "var(--font-size-larger)",
         color: "var(--title-color)",
         textTransform: "uppercase",
-        // marginTop: "1rem",
+        marginTop: "1rem",
         animation: "slideInUnified 1s ease-out 0.2s forwards",
         opacity: 0,
         willChange: "transform, opacity",
