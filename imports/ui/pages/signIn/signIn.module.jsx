@@ -17,7 +17,7 @@ const SignInStyle = {
 
     SignInContainer: styled(Box)(({ theme }) => ({
         maxWidth: "1200px",
-        minHeight: "100vh",
+        minHeight: "80vh",
         margin: "0 auto",
         padding: "3rem 2rem",
         display: "flex",
@@ -30,7 +30,7 @@ const SignInStyle = {
         },
         [theme.breakpoints.down("md")]: {
             padding: "3rem 1.5rem",
-
+            minHeight: "85vh",
         },
         [theme.breakpoints.down("sm")]: {
             padding: "3rem 1rem",
@@ -42,6 +42,8 @@ const SignInStyle = {
         flexDirection: "row",
         backgroundColor: "var(--container-color)",
         borderRadius: "1rem",
+        width: "100%",
+        maxWidth: "1000px",
         animation: "slideInUnified 1s ease-out forwards",
         opacity: 0,
         willChange: "transform, opacity",
@@ -49,10 +51,14 @@ const SignInStyle = {
             "0%": { opacity: 0, transform: "translateY(30px)" },
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        [theme.breakpoints.down("sm")]: {
+            width: "100%",
+            maxWidth: "450px",
+        },
     })),
 
     SignInLeft: styled(Box)(({ theme }) => ({
-        width: "420px",
+        width: "40%",
         backgroundColor: "var(--color-accent)",
         backgroundImage: "url(/assets/wallpaperSynergia.png)",
         backgroundSize: "1000px",
@@ -66,13 +72,16 @@ const SignInStyle = {
             "0%": { opacity: 0, transform: "translateY(30px)" },
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
-        '@media (max-width: 1100px)': {
-            display: 'none',
+        [theme.breakpoints.down("md")]: {
+            backgroundSize: "800px",
+        },
+        [theme.breakpoints.down("sm")]: {
+            display: "none",
         },
     })),
 
     SignInRight: styled(Box)(({ theme }) => ({
-        width: "620px",
+        width: "60%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -86,7 +95,6 @@ const SignInStyle = {
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
         [theme.breakpoints.down("md")]: {
-            width: "500px",
             padding: "4rem 3rem",
         },
         [theme.breakpoints.down("sm")]: {
@@ -101,6 +109,7 @@ const SignInStyle = {
         fontWeight: "var(--font-medium)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-0-25)",
+        lineHeight: "3rem",
         animation: "fadeInTitle 1s ease-out 0.4s forwards",
         opacity: 0,
         "@keyframes fadeInTitle": {
@@ -108,7 +117,7 @@ const SignInStyle = {
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
         [theme.breakpoints.down("md")]: {
-            lineHeight: "2.5rem",
+            lineHeight: "2rem",
         },
     })),
 

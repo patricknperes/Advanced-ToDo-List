@@ -406,8 +406,19 @@ const CardProfile = () => {
                 autoHideDuration={6000}
                 onClose={handleCloseSnackbar}
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                sx={{
+                    position: 'fixed',
+                    top: 16, // Adjust this value for spacing from the top
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    zIndex: 1300, // Ensure it appears above other content
+                }}
             >
-                <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+                <Alert
+                    onClose={handleCloseSnackbar}
+                    severity={snackbar.severity}
+                    sx={{ width: '100%' }}
+                >
                     {snackbar.message}
                 </Alert>
             </Snackbar>

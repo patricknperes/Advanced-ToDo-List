@@ -17,7 +17,7 @@ const SignUpStyle = {
 
     SignUpContainer: styled(Box)(({ theme }) => ({
         maxWidth: "1200px",
-        minHeight: "100vh",
+        minHeight: "80vh",
         margin: "0 auto",
         padding: "3rem 2rem",
         display: "flex",
@@ -30,6 +30,7 @@ const SignUpStyle = {
         },
         [theme.breakpoints.down("md")]: {
             padding: "3rem 1.5rem",
+            minHeight: "85vh",
         },
         [theme.breakpoints.down("sm")]: {
             padding: "3rem 1rem",
@@ -41,6 +42,8 @@ const SignUpStyle = {
         flexDirection: "row",
         backgroundColor: "var(--container-color)",
         borderRadius: "1rem",
+        width: "100%",
+        maxWidth: "1140px",
         animation: "slideInUnified 1s ease-out forwards",
         opacity: 0,
         willChange: "transform, opacity",
@@ -48,10 +51,17 @@ const SignUpStyle = {
             "0%": { opacity: 0, transform: "translateY(30px)" },
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        [theme.breakpoints.down("md")]: {
+            width: "100%",
+            maxWidth: "600px",
+        },
+        [theme.breakpoints.down("sm")]: {
+            maxWidth: "450px",
+        },
     })),
 
     SignUpLeft: styled(Box)(({ theme }) => ({
-        width: "620px",
+        width: "55%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -65,23 +75,19 @@ const SignUpStyle = {
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
         [theme.breakpoints.down("md")]: {
-            width: "500px",
+            width: "100%",
             padding: "4rem 3rem",
         },
         [theme.breakpoints.down("sm")]: {
-            maxWidth: "400px",
             padding: "3rem 2rem",
-        },
-        '@media (max-width: 480px)': {
-            width: "100%",
         },
     })),
 
     SignUpRight: styled(Box)(({ theme }) => ({
-        width: "540px",
+        width: "45%",
         backgroundColor: "var(--color-accent)",
         backgroundImage: "url(/assets/wallpaperSynergiaText.png)",
-        backgroundSize: "1100px",
+        backgroundSize: "90%",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         borderRadius: "3rem 1rem 1rem 3rem",
@@ -92,8 +98,8 @@ const SignUpStyle = {
             "0%": { opacity: 0, transform: "translateY(30px)" },
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
-        '@media (max-width: 1200px)': {
-            display: 'none',
+        [theme.breakpoints.down("md")]: {
+            display: "none",
         },
     })),
 
@@ -103,6 +109,7 @@ const SignUpStyle = {
         fontSize: "var(--font-size-big)",
         color: "var(--title-color)",
         marginBottom: "var(--mb-0-25)",
+        lineHeight: "3rem",
         animation: "fadeInTitle 1s ease-out 0.4s forwards",
         opacity: 0,
         "@keyframes fadeInTitle": {
@@ -110,7 +117,7 @@ const SignUpStyle = {
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
         [theme.breakpoints.down("md")]: {
-            lineHeight: "2.5rem",
+            lineHeight: "2rem",
         },
     })),
 
