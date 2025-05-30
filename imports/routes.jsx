@@ -79,8 +79,8 @@ const AppRoutes = () => {
                     <Route path="tasks" element={<TasksList />} />
                     <Route path="profile" element={<UserProfile />} />
                     <Route path="add-tasks" element={<AddTasks />} />
+                    <Route path="edit-task/:id" element={<EditTasks />} />
                 </Route>
-                <Route path="/edit-task/:id" element={<ProtectedRoute><EditTasks /></ProtectedRoute>} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

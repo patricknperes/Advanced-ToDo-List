@@ -128,7 +128,7 @@ const EditTaskForm = () => {
                 setAlertMessage('Tarefa excluída com sucesso!');
                 setAlertSeverity('success');
                 setOpenSnackbar(true);
-                navigate('/dashboard');
+                navigate('/tasks');
             }
         });
     };
@@ -203,11 +203,11 @@ const EditTaskForm = () => {
                                     ),
                                 },
                             }}
-                            sx={{
-                                '& input[type="date"]::-webkit-calendar-picker-indicator': {
-                                    filter: 'invert(1) brightness(2)',
-                                },
-                            }}
+                            // sx={{
+                            //     '& input[type="date"]::-webkit-calendar-picker-indicator': {
+                            //         filter: 'invert(1) brightness(2)',
+                            //     },
+                            // }}
                             placeholder="Digite a data de vencimento da tarefa"
                             fullWidth
                             type="date"
@@ -309,7 +309,7 @@ const EditTaskForm = () => {
                             variant="text"
                             startIcon={<ArrowBackIcon />}
                             size={isSmallScreen ? 'small' : 'large'}
-                            onClick={() => navigate('/dashboard')}
+                            onClick={() => navigate('/tasks')}
                             aria-label="Voltar para o dashboard"
                         >
                             Voltar

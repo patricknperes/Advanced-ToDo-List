@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -16,9 +16,10 @@ import Dashboard from '../../pages/dashboard/Dashboard';
 import TasksList from '../../pages/tasksList/TasksList';
 import UserProfile from '../../pages/userProfile/UserProfile';
 import AddTasks from '../../pages/addTasks/AddTasks';
-import NotFound from '../../pages/notFound/NotFound';
 import EditTasks from '../../pages/editTasks/EditTasks';
+import NotFound from '../../pages/notFound/NotFound';
 
+// Definição dos itens exibidos na sidebar
 const NAVIGATION = [
     {
         segment: 'dashboard',
@@ -40,6 +41,7 @@ const NAVIGATION = [
     },
 ];
 
+// Tema personalizado
 const demoTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -71,7 +73,10 @@ const demoTheme = createTheme({
     },
 });
 
+// Componente que renderiza o conteúdo com base na rota
 function DemoPageContent({ pathname }) {
+    const params = useParams(); // Captura o :id da rota /edit-task/:id
+
     switch (pathname) {
         case '/dashboard':
             return <Box><Dashboard /></Box>;
@@ -81,6 +86,8 @@ function DemoPageContent({ pathname }) {
             return <Box><UserProfile /></Box>;
         case '/add-tasks':
             return <Box><AddTasks /></Box>;
+        case `/edit-task/${params.id}`:
+            return <Box><EditTasks /></Box>;
         default:
             return <Box><NotFound /></Box>;
     }
@@ -90,6 +97,7 @@ DemoPageContent.propTypes = {
     pathname: PropTypes.string.isRequired,
 };
 
+// Componente principal do layout com a sidebar
 function DashboardLayoutAccount(props) {
     const { window } = props;
 
