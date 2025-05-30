@@ -2,9 +2,13 @@ import React from "react";
 import { Box, Button, styled, Chip, TextField, FormControl, Select, Typography, Tooltip } from "@mui/material";
 
 const TasksListStyle = {
-
     TasksListBackground: styled(Box)(({ theme }) => ({
         background: "var(--body-color)",
+        animation: "fadeInPage 1.2s ease-out forwards",
+        "@keyframes fadeInPage": {
+            "0%": { opacity: 0 },
+            "100%": { opacity: 1 },
+        },
     })),
 
     TasksListContainer: styled(Box)(({ theme }) => ({
@@ -14,6 +18,13 @@ const TasksListStyle = {
         padding: "3rem 2rem",
         display: "flex",
         flexDirection: "column",
+        animation: "slideInContent 1s ease-out forwards",
+        opacity: 0,
+        willChange: "transform, opacity",
+        "@keyframes slideInContent": {
+            "0%": { opacity: 0, transform: "translateY(30px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         [theme.breakpoints.down("md")]: {
             padding: "3rem 1.5rem",
         },
@@ -67,6 +78,13 @@ const TasksListStyle = {
         background: "var(--container-color)",
         padding: "2.5rem 2rem",
         borderRadius: "1rem",
+        animation: "slideInUnified 1s ease-out 0.2s forwards",
+        opacity: 0,
+        willChange: "transform, opacity",
+        "@keyframes slideInUnified": {
+            "0%": { opacity: 0, transform: "translateY(30px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
     })),
 
     // ========== Menu ==========
@@ -76,11 +94,16 @@ const TasksListStyle = {
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: "var(--mb-2-5)",
+        animation: "slideInUnified 1s ease-out 0.2s forwards",
+        opacity: 0,
+        willChange: "transform, opacity",
+        "@keyframes slideInUnified": {
+            "0%": { opacity: 0, transform: "translateY(15px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         [theme.breakpoints.down("md")]: {
             flexDirection: "column",
             gap: "1rem",
-        },
-        [theme.breakpoints.down("sm")]: {
         },
     })),
 
@@ -104,6 +127,7 @@ const TasksListStyle = {
         gap: "var(--mb-0-25)",
         padding: "1.3rem 1rem",
         borderRadius: "0.5rem",
+        transition: "transform 0.2s ease, box-shadow 0.2s ease",
         "&.MuiChip-outlined": {
             borderColor: "var(--text-color)",
             color: "var(--text-color)",
@@ -113,6 +137,9 @@ const TasksListStyle = {
             borderColor: "var(--title-color)",
             backgroundColor: "var(--container-color)",
             color: "var(--title-color)",
+        },
+        "&:hover": {
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
         },
         [theme.breakpoints.down("sm")]: {
             width: '100%',
@@ -162,9 +189,13 @@ const TasksListStyle = {
         color: "var(--title-color)",
         fontFamily: "var(--font-family)",
         borderRadius: "0.5rem",
+        transition: "transform 0.2s ease, box-shadow 0.2s ease",
         "&.MuiButton-outlined": {
             borderColor: "var(--title-color)",
             color: "var(--title-color)",
+        },
+        "&:hover": {
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
         },
         [theme.breakpoints.down("md")]: {
             fontSize: "var(--font-size-base)",
@@ -181,9 +212,17 @@ const TasksListStyle = {
         flexDirection: "row",
         justifyContent: "space-between",
         paddingBottom: "var(--mb-1)",
+        gap: "1rem",
         borderBottom: "0.1px solid rgba(183, 183, 183, 0.5)",
+        animation: "slideInUnified 1s ease-out 0.2s forwards",
+        opacity: 0,
+        willChange: "transform, opacity",
+        "@keyframes slideInUnified": {
+            "0%": { opacity: 0, transform: "translateY(15px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         [theme.breakpoints.down("sm")]: {
-            flexDirection: "column",
+            flexDirection: "row",
         },
     })),
 
@@ -204,7 +243,7 @@ const TasksListStyle = {
         alignItems: "center",
     })),
 
-    // ========== Label Rigth ==========
+    // ========== Label Right ==========
 
     TasksListLabelRigth: styled(Box)(({ theme }) => ({
         display: "grid",
@@ -216,11 +255,15 @@ const TasksListStyle = {
             gridTemplateColumns: "repeat(3, 80px)",
         },
         [theme.breakpoints.down("sm")]: {
-            gridTemplateColumns: "repeat(3, auto)",
+            gridTemplateColumns: "repeat(1, 150px)",
+            gap: "0.25rem",
+        },
+        '@media (max-width: 450px)': {
+            gridTemplateColumns: "repeat(1, 100px)",
         },
     })),
 
-    // ========== Task Componet Style ==========
+    // ========== Task Component Style ==========
 
     TasksListComponetContainer: styled(Box)(({ theme }) => ({
         display: "flex",
@@ -229,11 +272,18 @@ const TasksListStyle = {
         padding: "1.25rem 0",
         gap: "1rem",
         borderBottom: "0.1px solid rgba(183, 183, 183, 0.5)",
+        animation: "slideInUnified 1s ease-out 0.2s forwards",
+        opacity: 0,
+        willChange: "transform, opacity",
+        "@keyframes slideInUnified": {
+            "0%": { opacity: 0, transform: "translateY(15px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
         "&:hover": {
             backgroundColor: "rgba(0, 0, 0, 0.04)",
         },
         [theme.breakpoints.down("sm")]: {
-            flexDirection: "column",
+            flexDirection: "row",
         },
     })),
 
@@ -245,7 +295,7 @@ const TasksListStyle = {
         justifyContent: "center",
     })),
 
-    // ========== Componet Left ==========
+    // ========== Component Left ==========
 
     TasksListComponetLeft: styled(Box)(({ theme }) => ({
         display: "flex",
@@ -254,7 +304,7 @@ const TasksListStyle = {
         gap: "var(--mb-0-25)",
     })),
 
-    // ========== Componet Rigth ==========
+    // ========== Component Right ==========
 
     TasksListComponetRigth: styled(Box)(({ theme }) => ({
         display: "grid",
@@ -266,7 +316,10 @@ const TasksListStyle = {
             gridTemplateColumns: "repeat(3, 80px)",
         },
         [theme.breakpoints.down("sm")]: {
-            gridTemplateColumns: "repeat(3, auto)",
+            gridTemplateColumns: "repeat(1, 150px)",
+        },
+        '@media (max-width: 450px)': {
+            gridTemplateColumns: "repeat(1, 100px)",
         },
     })),
 
@@ -311,13 +364,26 @@ const TasksListStyle = {
         justifyContent: "center",
         padding: "2.5rem 2rem",
         textAlign: "center",
+        animation: "slideInUnified 1s ease-out 0.2s forwards",
+        opacity: 0,
+        willChange: "transform, opacity",
+        "@keyframes slideInUnified": {
+            "0%": { opacity: 0, transform: "translateY(15px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
     })),
 
     TasksListNotFoundImage: styled(Box)(({ theme }) => ({
         width: "100%",
         maxWidth: "650px",
         height: "auto",
-        marginBottom: "var(--mb-2)",
+        // marginBottom: "var(--mb-2)",
+        animation: "fadeInImage 1s ease-out 0.2s forwards",
+        opacity: 0,
+        "@keyframes fadeInImage": {
+            "0%": { opacity: 0, transform: "translateY(20px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
     })),
 
     TasksListNotFoundText: styled(Typography)(({ theme }) => ({
@@ -325,7 +391,14 @@ const TasksListStyle = {
         fontSize: "var(--font-size-larger)",
         color: "var(--title-color)",
         textTransform: "uppercase",
-        marginTop: "1rem",
+        // marginTop: "1rem",
+        animation: "slideInUnified 1s ease-out 0.2s forwards",
+        opacity: 0,
+        willChange: "transform, opacity",
+        "@keyframes slideInUnified": {
+            "0%": { opacity: 0, transform: "translateY(15px)" },
+            "100%": { opacity: 1, transform: "translateY(0)" },
+        },
     })),
 
     // ========== isLoading ==========
@@ -366,8 +439,6 @@ const TasksListStyle = {
         fontWeight: 400,
         textAlign: "left",
     })),
-
-
 };
 
 export default TasksListStyle;

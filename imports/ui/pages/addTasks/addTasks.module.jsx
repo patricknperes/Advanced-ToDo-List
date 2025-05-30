@@ -19,7 +19,7 @@ const AddTasksStyle = {
         padding: "3rem 2rem",
         display: "flex",
         flexDirection: "column",
-        minHeight: "100vh",
+        minHeight: "90vh",
         justifyContent: "center",
         alignItems: "center",
         animation: "slideInContent 1s ease-out forwards",
@@ -33,7 +33,7 @@ const AddTasksStyle = {
             padding: "3rem 1.5rem",
         },
         [theme.breakpoints.down("sm")]: {
-            padding: "3rem 1rem",
+            padding: "3rem 1.5rem",
         },
     })),
 
@@ -83,6 +83,7 @@ const AddTasksStyle = {
         backgroundColor: "var(--container-color)",
         borderRadius: "1rem",
         width: "100%",
+        maxWidth: "1000px",
         margin: "0 auto",
         animation: "slideInContent 1s ease-out forwards",
         opacity: 0,

@@ -73,7 +73,7 @@ const SignInForm = () => {
                 error={Boolean(errors.email)}
                 helperText={errors.email}
                 aria-label="Email"
-                size={isSmallScreen ? 'small' : 'medium'}
+            // size={isSmallScreen ? 'small' : 'medium'}
             />
             <SignInStyle.SignInTextField
                 id="password"
@@ -96,12 +96,12 @@ const SignInForm = () => {
                 error={Boolean(errors.password)}
                 helperText={errors.password}
                 aria-label="Senha"
-                size={isSmallScreen ? 'small' : 'medium'}
+            // size={isSmallScreen ? 'small' : 'medium'}
             />
             <SignInStyle.SignInButtonOutlined
                 variant="contained"
                 color="primary"
-                size={isSmallScreen ? 'small' : 'large'}
+                // size={isSmallScreen ? 'small' : 'large'}
                 endIcon={<ArrowForwardIcon />}
                 fullWidth
                 disabled={loading}

@@ -278,9 +278,9 @@ const Tasks = () => {
                         src="/assets/taskNotFound.png"
                         alt="Empty tasks"
                     />
-                    <TasksListStyle.TasksListNotFoundText>
+                    {/* <TasksListStyle.TasksListNotFoundText>
                         Nenhuma tarefa encontrada
-                    </TasksListStyle.TasksListNotFoundText>
+                    </TasksListStyle.TasksListNotFoundText> */}
                 </TasksListStyle.TasksListNotFoundContainer>
             )}
 

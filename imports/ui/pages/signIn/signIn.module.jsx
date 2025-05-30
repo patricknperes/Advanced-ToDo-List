@@ -17,7 +17,7 @@ const SignInStyle = {
 
     SignInContainer: styled(Box)(({ theme }) => ({
         maxWidth: "1200px",
-        height: "100vh",
+        minHeight: "100vh",
         margin: "0 auto",
         padding: "3rem 2rem",
         display: "flex",
@@ -30,6 +30,7 @@ const SignInStyle = {
         },
         [theme.breakpoints.down("md")]: {
             padding: "3rem 1.5rem",
+
         },
         [theme.breakpoints.down("sm")]: {
             padding: "3rem 1rem",
@@ -90,7 +91,7 @@ const SignInStyle = {
         },
         [theme.breakpoints.down("sm")]: {
             width: "100%",
-            padding: "3rem 2rem",
+            padding: "3.5rem 2rem",
         },
     })),
 

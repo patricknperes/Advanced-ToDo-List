@@ -72,7 +72,7 @@ const FormAddTask = () => {
                     setDueDate('');
                     setPrivacy('');
                     setErrors({});
-                    setTimeout(() => navigate('/dashboard'), 1000);
+                    setTimeout(() => navigate('/tasks'), 1000);
                 }
                 setOpenSnackbar(true);
             }
@@ -169,11 +169,11 @@ const FormAddTask = () => {
                                 setDueDate(e.target.value);
                                 setErrors({ ...errors, dueDate: '' });
                             }}
-                            sx={{
-                                '& input[type="date"]::-webkit-calendar-picker-indicator': {
-                                    filter: 'invert(1) brightness(2)'
-                                },
-                            }}
+                            // sx={{
+                            //     '& input[type="date"]::-webkit-calendar-picker-indicator': {
+                            //         filter: 'invert(1) brightness(2)'
+                            //     },
+                            // }}
                             error={!!errors.dueDate}
                             helperText={errors.dueDate}
                             fullWidth
@@ -246,7 +246,7 @@ const FormAddTask = () => {
                             variant="text"
                             startIcon={<ArrowBackIcon />}
                             size={isSmallScreen ? 'small' : 'large'}
-                            onClick={() => navigate('/dashboard')}
+                            onClick={() => navigate('/tasks')}
                             aria-label="Voltar para tarefas"
                         >
                             Voltar

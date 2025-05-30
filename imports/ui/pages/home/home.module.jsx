@@ -16,7 +16,7 @@ const HomeStyle = {
 
     HomeContent: styled(Box)(({ theme }) => ({
         padding: "3rem 0",
-        minHeight: "100vh",
+        minHeight: "90vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -27,6 +27,13 @@ const HomeStyle = {
             "0%": { opacity: 0 },
             "100%": { opacity: 1 },
         },
+        [theme.breakpoints.down("md")]: {
+            minHeight: "85vh",
+        },
+        [theme.breakpoints.down("sm")]: {
+            minHeight: "90vh",
+        },
+
     })),
 
     HomeContainer: styled(Box)(({ theme }) => ({
@@ -70,8 +77,9 @@ const HomeStyle = {
             boxSizing: "border-box",
         },
         [theme.breakpoints.down("sm")]: {
-            padding: "2.5rem 2rem",
+            padding: "3.5rem 2rem",
             boxSizing: "border-box",
+            backgroundPosition: "375px 40px, center",
             borderRadius: "1rem",
         },
     })),
@@ -105,6 +113,10 @@ const HomeStyle = {
             "0%": { opacity: 0, transform: "translateY(15px)" },
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        [theme.breakpoints.down("sm")]: {
+            maxWidth: "350px",
+
+        },
     })),
 
     CardButtonContainer: styled(Box)(({ theme }) => ({
@@ -118,8 +130,10 @@ const HomeStyle = {
             "100%": { opacity: 1, transform: "translateY(0)" },
         },
         [theme.breakpoints.down("sm")]: {
+            gap: "0.5rem",
+        },
+        '@media (max-width: 399px)': {
             flexDirection: "column",
-            gap: "1rem",
         },
     })),
 
@@ -134,7 +148,7 @@ const HomeStyle = {
             backgroundColor: "var(--color-accent-dark)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
         },
-        [theme.breakpoints.down("sm")]: {
+        '@media (max-width: 399px)': {
             width: "100%",
         },
     })),
@@ -151,7 +165,7 @@ const HomeStyle = {
             backgroundColor: "var(--body-color)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
         },
-        [theme.breakpoints.down("sm")]: {
+        '@media (max-width: 399px)': {
             width: "100%",
         },
     })),
