@@ -72,22 +72,25 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
   ![Welcome](./public/screens/homePageLayout.jpg)
 
 - **Tela de Login**
-  ![Login](./public/screens/signInPage.jpg)
+  ![Login](./public/screens/signInPageLayout.jpg)
 
 - **Tela de Cadastro**
-  ![Cadastro](./public/screens/signUpPage.jpg)
+  ![Cadastro](./public/screens/signUpPageLayout.jpg)
 
 - **Painel de Tarefas**
   ![Dashboard](./public/screens/dashboardPageLayout.jpg)
 
 - **Lista de Tarefas**
-  ![Tarefas](./public/screens/tasks.png)
+  ![Tarefas](./public/screens/tasksPageLayout.jpg)
 
 - **Adicionar Tarefa**
-  ![Adicionar](./public/screens/addTask.png)
+  ![Adicionar](./public/screens/addTaskPageLayout.jpg)
+
+- **Editar Tarefa**
+  ![Adicionar](./public/screens/editTaskPageLayout.jpg)
 
 - **Perfil do Usuário**
-  ![Perfil](./assets/screens/profile.png)
+  ![Perfil](./public/screens/profilePageLayout.jpg)
 
 ---
 
