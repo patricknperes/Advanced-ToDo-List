@@ -9,6 +9,7 @@ Sistema de gerenciamento de tarefas desenvolvido durante o treinamento interno d
 - [Visão Geral](#visão-geral)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Funcionalidades](#funcionalidades)
+- [Demonstração](#demonstração)
 - [Protótipos no Figma](#protótipos-no-figma)
 - [Capturas de Tela](#capturas-de-tela)
 - [Como Executar o Projeto](#como-executar-o-projeto)
@@ -53,6 +54,14 @@ O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa
 - Edição de perfil do usuário
 - Interface limpa e moderna
 - Layout responsivo
+
+---
+
+## 🎥 Demonstração
+
+Veja o funcionamento da aplicação em ação:
+
+![Demonstração do Advanced ToDo List](./public/screens/siteFuncionando.gif)
 
 ---
 
