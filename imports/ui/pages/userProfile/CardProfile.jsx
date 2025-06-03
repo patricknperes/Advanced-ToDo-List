@@ -118,12 +118,32 @@ const CardProfile = () => {
                     severity: 'error',
                 });
             } else {
-                setSnackbar({
-                    open: true,
-                    message: 'Perfil atualizado com sucesso!',
-                    severity: 'success',
-                });
-                setIsEditing(false);
+                // Update email if changed
+                if (formData.email !== user.emails[0].address) {
+                    Meteor.call('users.updateEmail', formData.email, (emailError) => {
+                        if (emailError) {
+                            setSnackbar({
+                                open: true,
+                                message: `Erro ao atualizar email: ${emailError.reason || 'Erro desconhecido'}`,
+                                severity: 'error',
+                            });
+                        } else {
+                            setSnackbar({
+                                open: true,
+                                message: 'Perfil e email atualizados com sucesso!',
+                                severity: 'success',
+                            });
+                            setIsEditing(false);
+                        }
+                    });
+                } else {
+                    setSnackbar({
+                        open: true,
+                        message: 'Perfil atualizado com sucesso!',
+                        severity: 'success',
+                    });
+                    setIsEditing(false);
+                }
             }
         });
     };
@@ -263,10 +283,10 @@ const CardProfile = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        disabled
+                        disabled={!isEditing}
                         size={isSmallScreen ? 'small' : 'medium'}
                         error={!!errors.email}
-                        helperText={errors.email || 'O email não pode ser alterado aqui'}
+                        helperText={errors.email}
                         slotProps={{
                             input: {
                                 startAdornment: (
@@ -408,10 +428,10 @@ const CardProfile = () => {
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 sx={{
                     position: 'fixed',
-                    top: 16, // Adjust this value for spacing from the top
+                    top: 16,
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    zIndex: 1300, // Ensure it appears above other content
+                    zIndex: 1300,
                 }}
             >
                 <Alert

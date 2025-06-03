@@ -90,9 +90,9 @@ const EditTasksStyle = {
     EditTasksLeft: styled(Box)(({ theme }) => ({
         width: "40%",
         backgroundColor: "var(--color-accent)",
-        backgroundImage: "url(/assets/wallpaperSynergiaAddTask.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundImage: "url(/assets/synergiaIconePrincipal.png)",
+        backgroundSize: "700px",
+        backgroundPosition: "-340px 70px",
         backgroundRepeat: "no-repeat",
         borderRadius: "1rem 0rem 0rem 1rem",
         animation: "slideInContent 1s ease-out forwards",
