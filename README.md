@@ -96,10 +96,13 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
   ![Adicionar](./public/screens/addTaskPageLayout.jpg)
 
 - **Editar Tarefa**
-  ![Adicionar](./public/screens/editTaskPageLayout.jpg)
+  ![Editar](./public/screens/editTaskPageLayout.jpg)
 
 - **Perfil do Usuário**
   ![Perfil](./public/screens/profilePageLayout.jpg)
+
+- **404**
+  ![404](./public/screens/notFoundPageLayout.jpg)
 
 ---
 
