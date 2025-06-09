@@ -150,6 +150,7 @@ Siga os passos abaixo para rodar o projeto localmente:
 ---
 
 ## 👤 Autor
+<a name="autor"></a>
 
 **Patrick Peres Nicolini**  
 Desenvolvedor Full Stack  
