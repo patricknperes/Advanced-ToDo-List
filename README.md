@@ -6,11 +6,11 @@ Sistema de gerenciamento de tarefas desenvolvido durante o treinamento interno d
 
 ## 📋 Índice
 
-- [Visão Geral](#visão-geral)
+- [Visão Geral](#visao-geral)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Funcionalidades](#funcionalidades)
-- [Demonstração](#demonstração)
-- [Protótipos no Figma](#protótipos-no-figma)
+- [Demonstração](#demonstracao)
+- [Protótipos no Figma](#prototipos-no-figma)
 - [Capturas de Tela](#capturas-de-tela)
 - [Como Executar o Projeto](#como-executar-o-projeto)
 - [Autor](#autor)
@@ -18,6 +18,7 @@ Sistema de gerenciamento de tarefas desenvolvido durante o treinamento interno d
 ---
 
 ## 📌 Visão Geral
+<a name="visao-geral"></a>
 
 **Advanced ToDo List** é uma aplicação web voltada para a organização de tarefas. Permite que os usuários criem, editem e acompanhem suas tarefas por meio de um painel interativo, com suporte a diferentes estados (em andamento, pendente, concluída).
 
@@ -26,6 +27,7 @@ O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa
 ---
 
 ## 🧰 Tecnologias Utilizadas
+<a name="tecnologias-utilizadas"></a>
 
 > Todas as tecnologias abaixo foram utilizadas no desenvolvimento da aplicação:
 
@@ -46,6 +48,7 @@ O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa
 ---
 
 ## ✅ Funcionalidades
+<a name="funcionalidades"></a>
 
 - Autenticação de usuário (login e cadastro)
 - Criação, edição e exclusão de tarefas
@@ -58,6 +61,7 @@ O projeto foi desenvolvido por **Patrick Peres Nicolini** como parte do programa
 ---
 
 ## 🎥 Demonstração
+<a name="demonstracao"></a>
 
 Veja o funcionamento da aplicação em ação:
 
@@ -66,6 +70,7 @@ Veja o funcionamento da aplicação em ação:
 ---
 
 ## 🎨 Protótipos no Figma
+<a name="prototipos-no-figma"></a>
 
 Veja todos os protótipos utilizados no desenvolvimento da interface:
 
@@ -74,6 +79,7 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
 ---
 
 ## 🖼 Capturas de Tela
+<a name="capturas-de-tela"></a>
 
 > Exemplos de telas da aplicação:
 
@@ -107,6 +113,7 @@ Veja todos os protótipos utilizados no desenvolvimento da interface:
 ---
 
 ## 🚀 Como Executar o Projeto
+<a name="como-executar-o-projeto"></a>
 
 Siga os passos abaixo para rodar o projeto localmente:
 
